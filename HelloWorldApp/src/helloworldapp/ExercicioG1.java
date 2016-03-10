@@ -22,6 +22,7 @@ public class ExercicioG1 {
         String primeiroValor;
         String segundoValor;
         String opEscolhida;
+        String opEscolhidaExtenso = "";
 
         Integer primeiroValorInteger;
         Integer segundoValorInteger;
@@ -56,22 +57,27 @@ public class ExercicioG1 {
             switch (opEscolhidaInteger) {
                 case 1:
                     resultado = primeiroValorInteger + segundoValorInteger;
+                    opEscolhidaExtenso = "soma";
                     break;
                 case 2:
                     resultado = primeiroValorInteger * segundoValorInteger;
+                    opEscolhidaExtenso = "multiplicação";
                     break;
                 case 3:
                     resultado = primeiroValorInteger - segundoValorInteger;
+                    opEscolhidaExtenso = "subtração";
                     break;
                 case 4:
                     resultado = primeiroValorInteger / segundoValorInteger;
+                    opEscolhidaExtenso = "divisão";
                     break;
 
             }
 
+            System.out.println("O resultado da " + opEscolhidaExtenso + " é : " + resultado);
+
         } catch (IOException e) {
             System.out.println("Erro de entrada");
         }
-        System.out.println("O resultado é : " + resultado);
     }
 }
