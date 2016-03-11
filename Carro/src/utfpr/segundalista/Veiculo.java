@@ -24,7 +24,7 @@ public class Veiculo {
         this.marca = marca;
         this.modelo = modelo;
         this.velocMax = velocMax;
-        this.motor = motor;
+        this.motor = new Motor();
     }        
 
     public String getPlaca() {
