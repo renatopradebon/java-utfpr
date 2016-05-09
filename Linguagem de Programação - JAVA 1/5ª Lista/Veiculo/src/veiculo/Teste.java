@@ -35,6 +35,7 @@ public class Teste {
 
             switch (opcao) {
                 case 1:
+                    
 //                    p = new Pessoa();
 //                    System.out.println("\n Cadastro de Pessoas\n");
 //                    p.setRg(Integer.parseInt(in.entra("\nRG do Pai: ")));
