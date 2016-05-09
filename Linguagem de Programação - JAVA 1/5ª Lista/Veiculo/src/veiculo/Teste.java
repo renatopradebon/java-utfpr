@@ -13,12 +13,12 @@ public class Teste {
      */
     public static void main(String[] args) {
 
-        Veiculo p = new Veiculo();
+
         BDSist bd = new BDSist();
         InData in = new InData();
         int opcao = 0;
 
-        boolean vai = true; //vari�vel "vai" para condi��o de parada do sistema
+        boolean vai = true;
 
         while (vai) {
             System.out.println("\n( 1 ) - Cadastrar Veículo de Passeio");
@@ -31,53 +31,62 @@ public class Teste {
             System.out.println("\n( 8 ) - Alterar dados do Veículo de Carga pela Placa");
             System.out.println("\n( 9 ) - Sair do Sistema");
 
-            opcao = Integer.parseInt(in.entra(("\n\n Digite o NUMERO da op��o: ")));
+            opcao = Integer.parseInt(in.entra(("\n\n Digite o NUMERO da opção: ")));
 
             switch (opcao) {
                 case 1:
-                    p = new Pessoa();
-                    System.out.println("\n Cadastro de Pessoas\n");
-                    p.setRg(Integer.parseInt(in.entra("\nRG do Pai: ")));
-                    p.setNome(in.entra("\nNome: "));
-                    p.getF().setCodF(Integer.parseInt(in.entra("\nCodigo do Filho: ")));
-                    p.getF().setNomeF(in.entra("\nNome do Filho: "));
-                    try {
-                        bd.setBDPes(p);
-                    } catch (RgExistenteException rge) {
-                        System.out.println("\n RG EXISTENTE...");
-                    }
+//                    p = new Pessoa();
+//                    System.out.println("\n Cadastro de Pessoas\n");
+//                    p.setRg(Integer.parseInt(in.entra("\nRG do Pai: ")));
+//                    p.setNome(in.entra("\nNome: "));
+//                    p.getF().setCodF(Integer.parseInt(in.entra("\nCodigo do Filho: ")));
+//                    p.getF().setNomeF(in.entra("\nNome do Filho: "));
+//                    try {
+//                        bd.setBDPes(p);
+//                    } catch (RgExistenteException rge) {
+//                        System.out.println("\n RG EXISTENTE...");
+//                    }
                     break;
                 case 2:
-                    System.out.println("\n Lista de Pessoas\n");
-                    bd.impLista();
+//                    System.out.println("\n Lista de Pessoas\n");
+//                    bd.impLista();
                     break;
                 case 3:
-                    p = new Pessoa();
-                    System.out.println("\n Consultar Pessoa pelo RG ");
-                    p = new Pessoa();
-                    p.setRg(Integer.parseInt(in.entra("\n Informe o RG: ")));
-                    p = bd.consRg(p);
-                    if (p == null) {
-                        System.out.println("\n Pessoa não existente");
-                    } else {
-                        System.out.println("\n RG..: " + p.getRg());
-                        System.out.println("\n Nome: " + p.getNome());
-                        System.out.println("\n Codigo do Filho: " + p.getF().getCodF());
-                        System.out.println("\n Nome do Filho..: " + p.getF().getNomeF());
-                    }
+//                    p = new Pessoa();
+//                    System.out.println("\n Consultar Pessoa pelo RG ");
+//                    p = new Pessoa();
+//                    p.setRg(Integer.parseInt(in.entra("\n Informe o RG: ")));
+//                    p = bd.consRg(p);
+//                    if (p == null) {
+//                        System.out.println("\n Pessoa não existente");
+//                    } else {
+//                        System.out.println("\n RG..: " + p.getRg());
+//                        System.out.println("\n Nome: " + p.getNome());
+//                        System.out.println("\n Codigo do Filho: " + p.getF().getCodF());
+//                        System.out.println("\n Nome do Filho..: " + p.getF().getNomeF());
+//                    }
                     break;
                 case 4:
-                    System.out.println("\n Opcao 4 Em constru��o ");
-                    ;
+                    System.out.println("\n Opcao 4 Em constru��o ");                    
                     break;
                 case 5:
-                    p = new Pessoa();
-                    System.out.println("\n Excluir Pessoa pelo RG");
-                    p = new Pessoa();
-                    p.setRg(Integer.parseInt(in.entra("\n Informe o RG: ")));
-                    bd.delRgBDPes(p);
+//                    p = new Pessoa();
+//                    System.out.println("\n Excluir Pessoa pelo RG");
+//                    p = new Pessoa();
+//                    p.setRg(Integer.parseInt(in.entra("\n Informe o RG: ")));
+//                    bd.delRgBDPes(p);
+                    System.out.println("\n Opcao 4 Em constru��o ");                    
                     break;
                 case 6:
+                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    break;
+                case 7:
+                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    break;
+                case 8:
+                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    break;
+                case 9:
                     System.exit(0);
                     break;
                 default:
