@@ -37,7 +37,7 @@ public final class Passeio extends Veiculo{
     
     @Override
     public String velocidadeString() {
-        return calcVel() + " m/h";
+        return calcVel() + " M/h";
     }
     
     @Override

@@ -5,7 +5,7 @@ package veiculo;
  * @author Renato Sotolani Pradebon
  */
 public abstract class Veiculo {
-    
+
     private String placa;
     private String marca;
     private String modelo;
@@ -51,11 +51,11 @@ public abstract class Veiculo {
     public Motor getMotor() {
         return motor;
     }
-    
+
     public int getQtdRodas() {
         return qtdRodas;
     }
-    
+
     public String getCor() {
         return cor;
     }
@@ -72,14 +72,18 @@ public abstract class Veiculo {
         this.modelo = modelo;
     }
 
-    public final void setVelocMax(int velocMax) {
-        this.velocMax = velocMax;
+    public final void setVelocMax(int velocMax) throws VelocException {
+        if ((velocMax >= 100) && (velocMax <= 250)) {
+            this.velocMax = velocMax;
+        } else {
+            throw new VelocException();
+        }
     }
 
     public final void setMotor(Motor motor) {
         this.motor = motor;
     }
-    
+
     public void setQtdRodas(int qtdRodas) {
         this.qtdRodas = qtdRodas;
     }
@@ -96,7 +100,7 @@ public abstract class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" + "placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + 
-               ", velocMax=" + velocMax + ", setQtdRodas=" + qtdRodas + ", motor=" + motor + '}';
+        return "Veiculo{" + "placa=" + placa + ", marca=" + marca + ", modelo=" + modelo
+                + ", velocMax=" + velocMax + ", setQtdRodas=" + qtdRodas + ", motor=" + motor + '}';
     }
 }

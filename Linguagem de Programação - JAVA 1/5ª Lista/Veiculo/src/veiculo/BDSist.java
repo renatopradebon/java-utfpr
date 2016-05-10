@@ -7,16 +7,6 @@ public class BDSist {
 
     private final List<Carga> BDCarga = new ArrayList<>();
     private final List<Passeio> BDPasseio = new ArrayList<>();
-
-    public Passeio consultaPlacaPasseio(Passeio passeio) {
-        for (int i = 0; i < BDPasseio.size(); i++) {
-            if (BDPasseio.get(i).getPlaca().equals(passeio.getPlaca())) {
-                return BDPasseio.get(i);
-            }
-
-        }
-        return null;
-    }
     
     public int consultaPosicaoPlacaPasseio(Passeio passeio) {
         for (int i = 0; i < BDPasseio.size(); i++) {
@@ -25,6 +15,11 @@ public class BDSist {
             }
         }
         return -1;
+    }
+
+    public Passeio consultaPlacaPasseio(Passeio passeio) {
+        int posicao = consultaPosicaoPlacaPasseio(passeio);
+        return posicao == -1 ? null : BDPasseio.get(posicao);
     }
     
     public int consultaPosicaoPlacaCarga(Carga carga) {
@@ -37,12 +32,8 @@ public class BDSist {
     }
 
     public Carga consultaPlacaCarga(Carga carga) {
-        for (int i = 0; i < BDCarga.size(); i++) {
-            if (BDCarga.get(i).getPlaca().equals(carga.getPlaca())) {
-                return BDCarga.get(i);
-            }
-        }
-        return null;
+        int posicao = consultaPosicaoPlacaCarga(carga);
+        return posicao == -1 ? null : BDCarga.get(posicao);
     }
 
     public void setVeiculoPasseio(Passeio passeio) throws VeicExistException {
