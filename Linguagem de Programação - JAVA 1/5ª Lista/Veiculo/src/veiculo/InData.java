@@ -1,10 +1,13 @@
 package veiculo;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ *
+ * @author Renato Sotolani Pradebon
+ */
 public class InData {
 
     public String entra(String label) {

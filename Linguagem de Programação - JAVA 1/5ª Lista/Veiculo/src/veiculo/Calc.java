@@ -7,8 +7,9 @@ package veiculo;
 
 /**
  *
- * @author Renato Pradebon
+ * @author Renato Sotolani Pradebon
  */
 public interface Calc {
+
     public int calcular();
 }

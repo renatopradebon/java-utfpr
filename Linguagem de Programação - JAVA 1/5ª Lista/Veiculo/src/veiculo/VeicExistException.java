@@ -7,7 +7,7 @@ package veiculo;
 
 /**
  *
- * @author renatopradebon
+ * @author Renato Sotolani Pradebon
  */
 public class VeicExistException extends Exception{
     public VeicExistException() {

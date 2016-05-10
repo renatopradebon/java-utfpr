@@ -4,8 +4,8 @@ package veiculo;
  *
  * @author Renato Sotolani Pradebon
  */
-public final class Passeio extends Veiculo{
-    
+public final class Passeio extends Veiculo implements Calc {
+
     private int qtdePassageiros;
 
     public Passeio() {
@@ -28,20 +28,26 @@ public final class Passeio extends Veiculo{
     @Override
     public String toString() {
         return "Passeio{" + "qtdePassageiros=" + qtdePassageiros + '}';
-    }        
+    }
 
     @Override
     public int calcVel() {
         return super.getVelocMax() * 1000;
     }
-    
+
     @Override
     public String velocidadeString() {
         return calcVel() + " M/h";
     }
-    
+
     @Override
     public String informacoesVeiculo() {
-        return "    Quantidade de Passageiros: " + getQtdePassageiros();
+        return "    Quantidade de Passageiros: " + getQtdePassageiros()
+                + "    Total Calcular: " + calcular();
+    }
+
+    @Override
+    public int calcular() {
+        return this.getCor().length() + this.getMarca().length() + this.getModelo().length() + this.getPlaca().length();
     }
 }

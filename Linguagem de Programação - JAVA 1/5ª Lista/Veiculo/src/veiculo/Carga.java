@@ -4,7 +4,7 @@ package veiculo;
  *
  * @author Renato Sotolani Pradebon
  */
-public final class Carga extends Veiculo {
+public final class Carga extends Veiculo implements Calc {
 
     private int tara;
     private int cargaMax;
@@ -54,6 +54,12 @@ public final class Carga extends Veiculo {
     @Override
     public String informacoesVeiculo() {
         return "    Tara: " + getTara() + " Kg\n"
-                + "    Carga Máxima: " + getCargaMax() + " Kg";
+                + "    Carga Máxima: " + getCargaMax() + " Kg"
+                + "    Total Calcular: " + calcular();
+    }
+
+    @Override
+    public int calcular() {
+        return this.getCargaMax() + this.getQtdRodas() + this.getTara() + this.getVelocMax() + this.getMotor().getPotencia() + this.getMotor().getQtdPist();
     }
 }

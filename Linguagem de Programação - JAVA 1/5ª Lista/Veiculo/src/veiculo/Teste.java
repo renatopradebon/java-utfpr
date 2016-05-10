@@ -13,7 +13,7 @@ public class Teste {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        BDSist bd = new BDSist();
+        BDVeiculo bd = new BDVeiculo();
         InData in = new InData();
 
         int opcao = 0;
@@ -21,15 +21,19 @@ public class Teste {
 
         boolean vai = true;
         boolean testaInt;
+        boolean continuaCadastrando;
+        boolean sobrescreverVeiculo;
+
+        Passeio passeio;
+        Carga carga;
 
         while (vai) {
-
             mostraMenu();
 
             testaInt = true;
             while (testaInt) {
                 try {
-                    opcao = Integer.parseInt(in.entra(("\n\n Digite o NUMERO da opção: ")));
+                    opcao = Integer.parseInt(in.entra(("\nDigite o NUMERO da opção: ")));
                     testaInt = false;
                 } catch (NumberFormatException erro) {
                     System.out.println("\nA opção deve ser numérico!");
@@ -38,23 +42,55 @@ public class Teste {
 
             switch (opcao) {
                 case 1:
-                    Passeio passeio = new Passeio();
-                    cadastroVeiculoPasseio(passeio, bd, in);
-                    
-                    try {
-                        bd.setVeiculoPasseio(passeio);
-                    } catch (VeicExistException erro) {
-                        System.err.println("\n Erro -> " + erro);
+                    continuaCadastrando = true;
+
+                    while (continuaCadastrando) {
+                        passeio = new Passeio();
+                        cadastroVeiculoPasseio(passeio, bd, in, false);
+                        sobrescreverVeiculo = false;
+
+                        try {
+                            bd.setVeiculoPasseio(passeio);
+                        } catch (VeicExistException erro) {
+                            System.err.println("\nErro -> " + erro);
+
+                            sobrescreverVeiculo = in.entra("\nDeseja sobrescrever o veículo existente? <S>im ou <N>ão: ").toUpperCase().equals("S");
+
+                            if (sobrescreverVeiculo) {
+                                posicao = bd.consultaPosicaoPlacaPasseio(passeio);
+                                bd.altVeiculoBDPasseio(posicao, passeio);
+                                continuaCadastrando = false;
+                            }
+                        }
+                        if (sobrescreverVeiculo == false) {
+                            continuaCadastrando = in.entra("\nDeseja cadastrar outro veículo de passeio? <S>im ou <N>ão: ").toUpperCase().equals("S");
+                        }
                     }
                     break;
                 case 2:
-                    Carga carga = new Carga();
-                    cadastroVeiculoCarga(carga, bd, in);
-                    
-                    try {
-                        bd.setVeiculoCarga(carga);
-                    } catch (VeicExistException erro) {
-                        System.err.println("\n Erro -> " + erro);
+                    continuaCadastrando = true;
+
+                    while (continuaCadastrando) {
+                        carga = new Carga();
+                        cadastroVeiculoCarga(carga, bd, in, false);
+                        sobrescreverVeiculo = false;
+
+                        try {
+                            bd.setVeiculoCarga(carga);
+                        } catch (VeicExistException erro) {
+                            System.err.println("\nErro -> " + erro);
+
+                            sobrescreverVeiculo = in.entra("\nDeseja sobrescrever o veículo existente? <S>im ou <N>ão: ").toUpperCase().equals("S");
+
+                            if (sobrescreverVeiculo) {
+                                posicao = bd.consultaPosicaoPlacaCarga(carga);
+                                bd.altVeiculoBDCarga(posicao, carga);
+                                continuaCadastrando = false;
+                            }
+                        }
+                        if (sobrescreverVeiculo == false) {
+                            continuaCadastrando = in.entra("\nDeseja cadastrar outro veículo de carga? <S>im ou <N>ão: ").toUpperCase().equals("S");
+                        }
                     }
                     break;
                 case 3:
@@ -67,48 +103,59 @@ public class Teste {
                     break;
                 case 5:
                     mostraDataHoraAtual();
-                    System.out.println("\n Consulta de Veículos de Passeio por placa");
+                    System.out.println("\nConsulta de Veículos de Passeio por placa");
                     passeio = new Passeio();
 
                     passeio.setPlaca(in.entra("\nDigite a Placa do Veículo: "));
                     posicao = bd.consultaPosicaoPlacaPasseio(passeio);
 
                     if (posicao == -1) {
-                        System.out.println("\n Veículo não cadastrado");
+                        System.out.println("\nVeículo não cadastrado");
                     } else {
                         bd.imprimeVeiculoPasseio(posicao);
                     }
                     break;
                 case 6:
                     mostraDataHoraAtual();
-                    System.out.println("\n Consulta de Veículos de Carga por placa");
+                    System.out.println("\nConsulta de Veículos de Carga por placa");
                     carga = new Carga();
 
                     carga.setPlaca(in.entra("\nDigite a Placa do Veículo: "));
                     posicao = bd.consultaPosicaoPlacaCarga(carga);
 
                     if (posicao == -1) {
-                        System.out.println("\n Veículo não cadastrado");
+                        System.out.println("\nVeículo não cadastrado");
                     } else {
                         bd.imprimeVeiculoCarga(posicao);
                     }
                     break;
                 case 7:
-                    System.out.println("\n Edição de Veículo de Passeio");
                     passeio = new Passeio();
 
                     passeio.setPlaca(in.entra("\nDigite a Placa do Veículo: "));
                     posicao = bd.consultaPosicaoPlacaPasseio(passeio);
 
                     if (posicao == -1) {
-                        System.out.println("\n Veículo não cadastrado");
+                        System.out.println("\nVeículo não cadastrado");
                     } else {
                         bd.imprimeVeiculoPasseio(posicao);
-                        cadastroVeiculoPasseio(passeio, bd, in);
+                        cadastroVeiculoPasseio(passeio, bd, in, true);
+                        bd.altVeiculoBDPasseio(posicao, passeio);
                     }
                     break;
                 case 8:
-                    System.out.println("\n Opcao 4 Em constru��o ");
+                    carga = new Carga();
+
+                    carga.setPlaca(in.entra("\nDigite a Placa do Veículo: "));
+                    posicao = bd.consultaPosicaoPlacaCarga(carga);
+
+                    if (posicao == -1) {
+                        System.out.println("\nVeículo não cadastrado");
+                    } else {
+                        bd.imprimeVeiculoPasseio(posicao);
+                        cadastroVeiculoCarga(carga, bd, in, true);
+                        bd.altVeiculoBDCarga(posicao, carga);
+                    }
                     break;
                 case 9:
                     System.exit(0);
@@ -140,11 +187,16 @@ public class Teste {
         System.out.println("\nData e Hora do sistema: " + (dataHora.format(data)));
     }
 
-    public static void cadastroVeiculoPasseio(Passeio passeio, BDSist bd, InData in) {
+    public static void cadastroVeiculoPasseio(Passeio passeio, BDVeiculo bd, InData in, boolean editar) {
         boolean testaInt;
+        String tipoCadastro = editar ? "Edição" : "Cadastro";
 
-        System.out.println("\n Cadastro de Veículo de Passeio\n");
-        passeio.setPlaca(in.entra("\nPlaca do Veículo: "));
+        System.out.println("\n" + tipoCadastro + " de Veículo de Passeio");
+
+        if (!editar) {
+            passeio.setPlaca(in.entra("\nPlaca do Veículo: "));
+        }
+
         passeio.setMarca(in.entra("\nMarca do Veículo: "));
         passeio.setModelo(in.entra("\nModelo do Veículo: "));
         passeio.setCor(in.entra("\nCor do Veículo: "));
@@ -157,7 +209,7 @@ public class Teste {
             } catch (NumberFormatException erro) {
                 System.out.println("\nA velocidade máxima deve ser numérico!");
             } catch (VelocException erro2) {
-                erro2.impErro();
+                //erro2.impErro();
                 try {
                     passeio.setVelocMax(150);
                 } catch (VelocException e) {
@@ -206,16 +258,17 @@ public class Teste {
             }
         }
     }
-    
-    public static void cadastroVeiculoCarga(Carga carga, BDSist bd, InData in, boolean editar) {
-        
-    }
-    
-    public static void cadastroVeiculoCarga(Carga carga, BDSist bd, InData in) {
-        boolean testaInt;
 
-        System.out.println("\n Cadastro de Veículo de Carga\n");
-        carga.setPlaca(in.entra("\nPlaca do Veículo: "));
+    public static void cadastroVeiculoCarga(Carga carga, BDVeiculo bd, InData in, boolean editar) {
+        boolean testaInt;
+        String tipoCadastro = editar ? "Edição" : "Cadastro";
+
+        System.out.println("\n" + tipoCadastro + " de Veículo de Carga");
+
+        if (!editar) {
+            carga.setPlaca(in.entra("\nPlaca do Veículo: "));
+        }
+
         carga.setMarca(in.entra("\nMarca do Veículo: "));
         carga.setModelo(in.entra("\nModelo do Veículo: "));
         carga.setCor(in.entra("\nCor do Veículo: "));
@@ -228,7 +281,7 @@ public class Teste {
             } catch (NumberFormatException erro) {
                 System.out.println("\nA velocidade deve ser numérico!");
             } catch (VelocException erro2) {
-                erro2.impErro();
+                //erro2.impErro();
                 try {
                     carga.setVelocMax(120);
                 } catch (VelocException e) {
@@ -266,7 +319,7 @@ public class Teste {
                 System.out.println("\nA Quantidade de rodas deve ser numérico!");
             }
         }
-        
+
         testaInt = true;
         while (testaInt) {
             try {
@@ -276,7 +329,7 @@ public class Teste {
                 System.out.println("\nA Carga Máxima deve ser numérico!");
             }
         }
-        
+
         testaInt = true;
         while (testaInt) {
             try {
@@ -285,6 +338,6 @@ public class Teste {
             } catch (NumberFormatException erro) {
                 System.out.println("\nA Tara do veículo deve ser numérico!");
             }
-        }        
+        }
     }
 }

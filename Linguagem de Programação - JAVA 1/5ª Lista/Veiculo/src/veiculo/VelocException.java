@@ -7,14 +7,15 @@ package veiculo;
 
 /**
  *
- * @author Renato Pradebon
+ * @author Renato Sotolani Pradebon
  */
 public class VelocException extends Exception {
+
     public VelocException() {
         System.err.println("A velocidade máxima está fora dos limites brasileiros");
     }
-    
+
     public void impErro() {
-        System.err.println("A velocidade máxima está fora dos limites brasileiros");        
+        System.err.println("A velocidade máxima está fora dos limites brasileiros");
     }
 }
