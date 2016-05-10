@@ -12,8 +12,8 @@ public final class Passeio extends Veiculo{
         this.qtdePassageiros = 0;
     }
 
-    public Passeio(int qtdePassageiros, String placa, String marca, String modelo, int velocMax, Motor motor) {
-        super(placa, marca, modelo, velocMax, motor);
+    public Passeio(int qtdePassageiros, String placa, String marca, String modelo, int velocMax, Motor motor, String cor) {
+        super(placa, marca, modelo, velocMax, motor, cor);
         this.qtdePassageiros = qtdePassageiros;
     }
 
@@ -42,7 +42,6 @@ public final class Passeio extends Veiculo{
     
     @Override
     public String informacoesVeiculo() {
-        return "    Tipo de Veículo: Passeio\n"
-             + "    Quantidade de Passageiros: " + getQtdePassageiros();
+        return "    Quantidade de Passageiros: " + getQtdePassageiros();
     }
 }

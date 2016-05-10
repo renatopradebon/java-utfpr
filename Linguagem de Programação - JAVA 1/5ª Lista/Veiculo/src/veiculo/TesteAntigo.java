@@ -59,7 +59,7 @@ public class TesteAntigo {
         
         retonarDados(carga2, getContVeiculos());
         
-        Carga carga3 = new Carga(16000, 90000, "HRR-1412", "MAN", "TGX 29,440", 130, new Motor(8, 560));
+        Carga carga3 = new Carga(16000, 90000, "HRR-1412", "MAN", "TGX 29,440", 130, new Motor(8, 560), "Roxa");
         retonarDados(carga3, getContVeiculos());
         
     }

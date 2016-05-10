@@ -14,8 +14,8 @@ public final class Carga extends Veiculo {
         this.cargaMax = 0;
     }
 
-    public Carga(int tara, int cargaMax, String placa, String marca, String modelo, int velocMax, Motor motor) {
-        super(placa, marca, modelo, velocMax, motor);
+    public Carga(int tara, int cargaMax, String placa, String marca, String modelo, int velocMax, Motor motor, String cor) {
+        super(placa, marca, modelo, velocMax, motor, cor);
         this.tara = tara;
         this.cargaMax = cargaMax;
     }
@@ -53,8 +53,7 @@ public final class Carga extends Veiculo {
 
     @Override
     public String informacoesVeiculo() {
-        return "    Tipo de Veículo: Carga\n"
-                + "    Tara: " + getTara() + " Kg\n"
+        return "    Tara: " + getTara() + " Kg\n"
                 + "    Carga Máxima: " + getCargaMax() + " Kg";
     }
 }

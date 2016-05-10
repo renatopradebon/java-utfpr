@@ -6,86 +6,199 @@ package veiculo;
  */
 public class Teste {
 
-    private static int contVeiculos = 1;
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-
         BDSist bd = new BDSist();
         InData in = new InData();
+
         int opcao = 0;
+        int posicao;
 
         boolean vai = true;
+        boolean testaInt = true;
 
         while (vai) {
-            System.out.println("\n( 1 ) - Cadastrar Veículo de Passeio");
-            System.out.println("\n( 2 ) - Cadastrar Veículo de Carga");
-            System.out.println("\n( 3 ) - Imprimir todos os Veículos de Passeio");
-            System.out.println("\n( 4 ) - Imprimir todos os Veículos de Carga");
-            System.out.println("\n( 5 ) - Imprimir Veículo de Passeio pela Placa");
-            System.out.println("\n( 6 ) - Imprimir Veículo de Carga pela Placa");
-            System.out.println("\n( 7 ) - Alterar dados do Veículo de Passeio pela Placa");
-            System.out.println("\n( 8 ) - Alterar dados do Veículo de Carga pela Placa");
-            System.out.println("\n( 9 ) - Sair do Sistema");
 
-            opcao = Integer.parseInt(in.entra(("\n\n Digite o NUMERO da opção: ")));
+            mostraMenu();
+
+            testaInt = true;
+            while (testaInt) {
+                try {
+                    opcao = Integer.parseInt(in.entra(("\n\n Digite o NUMERO da opção: ")));
+                    testaInt = false;
+                } catch (NumberFormatException erro) {
+                    System.out.println("\nA opção deve ser numérico!");
+                }
+            }
 
             switch (opcao) {
                 case 1:
-                    
-//                    p = new Pessoa();
-//                    System.out.println("\n Cadastro de Pessoas\n");
-//                    p.setRg(Integer.parseInt(in.entra("\nRG do Pai: ")));
-//                    p.setNome(in.entra("\nNome: "));
-//                    p.getF().setCodF(Integer.parseInt(in.entra("\nCodigo do Filho: ")));
-//                    p.getF().setNomeF(in.entra("\nNome do Filho: "));
-//                    try {
-//                        bd.setBDPes(p);
-//                    } catch (RgExistenteException rge) {
-//                        System.out.println("\n RG EXISTENTE...");
-//                    }
+                    Passeio passeio = new Passeio();
+                    System.out.println("\n Cadastro de Veículo de Passeio\n");
+                    passeio.setPlaca(in.entra("\nPlaca do Veículo: "));
+                    passeio.setMarca(in.entra("\nMarca do Veículo: "));
+                    passeio.setModelo(in.entra("\nModelo do Veículo: "));
+                    passeio.setCor(in.entra("\nCor do Veículo: "));
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            passeio.setVelocMax(Integer.parseInt(in.entra("\nVelocidade Máxima do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA velocidade deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            passeio.getMotor().setPotencia(Integer.parseInt(in.entra("\nPotência do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA Potência deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            passeio.getMotor().setQtdPist(Integer.parseInt(in.entra("\nQuantidade de pistões do motor do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA Quantidade de pistões deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            passeio.setQtdePassageiros(Integer.parseInt(in.entra("\nQuantidade de passageiros do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA Quantidade de passageiros deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            passeio.setQtdRodas(Integer.parseInt(in.entra("\nQuantidade de rodas do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA Quantidade de rodas deve ser numérico!");
+                        }
+                    }
+
+                    try {
+                        bd.setVeiculoPasseio(passeio);
+                    } catch (VeicExistException erro) {
+                        System.err.println("\n Erro -> " + erro);
+                    }
                     break;
                 case 2:
-//                    System.out.println("\n Lista de Pessoas\n");
-//                    bd.impLista();
+                    Carga carga = new Carga();
+                    System.out.println("\n Cadastro de Veículo de Carga\n");
+                    carga.setPlaca(in.entra("\nPlaca do Veículo: "));
+                    carga.setMarca(in.entra("\nMarca do Veículo: "));
+                    carga.setModelo(in.entra("\nModelo do Veículo: "));
+                    carga.setCor(in.entra("\nCor do Veículo: "));
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            carga.setVelocMax(Integer.parseInt(in.entra("\nVelocidade Máxima do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA velocidade deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            carga.getMotor().setPotencia(Integer.parseInt(in.entra("\nPotência do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA potência deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            carga.getMotor().setQtdPist(Integer.parseInt(in.entra("\nQuantidade de pistões do motor do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA quantidade de pistões deve ser numérico!");
+                        }
+                    }
+
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            carga.setCargaMax(Integer.parseInt(in.entra("\nCarga Máxima do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA Carga Máxima deve ser numérico!");
+                        }
+                    }
+                    testaInt = true;
+                    while (testaInt) {
+                        try {
+                            carga.setTara(Integer.parseInt(in.entra("\nTara do Veículo: ")));
+                            testaInt = false;
+                        } catch (NumberFormatException erro) {
+                            System.out.println("\nA Tara do veículo deve ser numérico!");
+                        }
+                    }
+
+                    try {
+                        bd.setVeiculoCarga(carga);
+                    } catch (VeicExistException erro) {
+                        System.err.println("\n Erro -> " + erro);
+                    }
                     break;
                 case 3:
-//                    p = new Pessoa();
-//                    System.out.println("\n Consultar Pessoa pelo RG ");
-//                    p = new Pessoa();
-//                    p.setRg(Integer.parseInt(in.entra("\n Informe o RG: ")));
-//                    p = bd.consRg(p);
-//                    if (p == null) {
-//                        System.out.println("\n Pessoa não existente");
-//                    } else {
-//                        System.out.println("\n RG..: " + p.getRg());
-//                        System.out.println("\n Nome: " + p.getNome());
-//                        System.out.println("\n Codigo do Filho: " + p.getF().getCodF());
-//                        System.out.println("\n Nome do Filho..: " + p.getF().getNomeF());
-//                    }
+                    bd.imprimeListaVeiculosPasseio();
                     break;
                 case 4:
-                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    bd.imprimeListaVeicuolosCarga();
                     break;
                 case 5:
-//                    p = new Pessoa();
-//                    System.out.println("\n Excluir Pessoa pelo RG");
-//                    p = new Pessoa();
-//                    p.setRg(Integer.parseInt(in.entra("\n Informe o RG: ")));
-//                    bd.delRgBDPes(p);
-                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    System.out.println("\n Consulta de Veículos de Passeio por placa");
+                    passeio = new Passeio();
+
+                    passeio.setPlaca(in.entra("\nDigite a Placa do Veículo: "));
+                    posicao = bd.consultaPosicaoPlacaPasseio(passeio);
+
+                    if (posicao == -1) {
+                        System.out.println("\n Veículo não cadastrado");
+                    } else {
+                        bd.imprimeVeiculoPasseio(posicao);
+                    }
                     break;
                 case 6:
-                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    System.out.println("\n Consulta de Veículos de Carga por placa");
+                    carga = new Carga();
+
+                    carga.setPlaca(in.entra("\nDigite a Placa do Veículo: "));
+                    posicao = bd.consultaPosicaoPlacaCarga(carga);
+
+                    if (posicao == -1) {
+                        System.out.println("\n Veículo não cadastrado");
+                    } else {
+                        bd.imprimeVeiculoCarga(posicao);
+                    }
                     break;
                 case 7:
-                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    System.out.println("\n Opcao 4 Em constru��o ");
                     break;
                 case 8:
-                    System.out.println("\n Opcao 4 Em constru��o ");                    
+                    System.out.println("\n Opcao 4 Em constru��o ");
                     break;
                 case 9:
                     System.exit(0);
@@ -99,24 +212,16 @@ public class Teste {
 
     }
 
-    private static void retonarDados(Veiculo veiculo, int contadorVeiculos) {
-        System.out.println("--------------------- Veículo nº " + contadorVeiculos + " ---------------------");
-        System.out.println("Dados do veiculo " + veiculo.getModelo() + ".");
-        System.out.println("Marca: " + veiculo.getMarca() + ".");
-        System.out.println("Placa: " + veiculo.getPlaca() + ".");
-        System.out.println("Velocidade Máxima: " + veiculo.velocidadeString());
-        System.out.println("Potência do Motor: " + veiculo.getMotor().getPotencia() + " Cavalo(s).");
-        System.out.println("Quantidade de Pistões do Motor: " + veiculo.getMotor().getQtdPist() + ".");
-        System.out.println("Demais informações \n" + veiculo.informacoesVeiculo());
-        System.out.println("\n");
-        incrementaContador();
-    }
-
-    private static void incrementaContador() {
-        Teste.contVeiculos++;
-    }
-
-    private static int getContVeiculos() {
-        return Teste.contVeiculos;
+    public static void mostraMenu() {
+        System.out.println("\n---------------- Menu de Opções ----------------------");
+        System.out.println("\n( 1 ) - Cadastrar Veículo de Passeio");
+        System.out.println("\n( 2 ) - Cadastrar Veículo de Carga");
+        System.out.println("\n( 3 ) - Imprimir todos os Veículos de Passeio");
+        System.out.println("\n( 4 ) - Imprimir todos os Veículos de Carga");
+        System.out.println("\n( 5 ) - Imprimir Veículo de Passeio pela Placa");
+        System.out.println("\n( 6 ) - Imprimir Veículo de Carga pela Placa");
+        System.out.println("\n( 7 ) - Alterar dados do Veículo de Passeio pela Placa");
+        System.out.println("\n( 8 ) - Alterar dados do Veículo de Carga pela Placa");
+        System.out.println("\n( 9 ) - Sair do Sistema");
     }
 }
