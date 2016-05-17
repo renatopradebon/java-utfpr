@@ -4,10 +4,12 @@
  */
 package manipulaobjeto;
 
+import java.io.Serializable;
+
 /**
  * @author fabricio
  */
-public class Cliente {
+public class Cliente implements Serializable {
 
     private String nome;
     private String fone;
@@ -26,11 +28,7 @@ public class Cliente {
     }
 
     public boolean Maior() {
-        if (getIdade() >= 18) {
-            return true;
-        } else {
-            return false;
-        }
+        return getIdade() >= 18;
     }
 
     /**

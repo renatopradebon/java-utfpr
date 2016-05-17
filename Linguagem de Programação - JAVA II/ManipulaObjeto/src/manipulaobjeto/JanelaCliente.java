@@ -15,15 +15,15 @@ package manipulaobjeto;
 public class JanelaCliente extends javax.swing.JFrame {
 
     private Cliente cliente = null;
-    private ManipulaTexto mt = null;
-//    private ManipulaObjeto mt = null;
+//    private ManipulaTexto mt = null;
+    private ManipulaObjeto mt = null;
 
     /**
      * Creates new form JanelaCliente
      */
     public JanelaCliente() {
-        mt = new ManipulaTexto();
-//        mt = new ManipulaObjeto();
+//        mt = new ManipulaTexto();
+        mt = new ManipulaObjeto();
         initComponents();
     }
 
@@ -46,7 +46,7 @@ public class JanelaCliente extends javax.swing.JFrame {
         jSIdade = new javax.swing.JSpinner();
         jBtnGravar = new javax.swing.JButton();
         jBtnProximo = new javax.swing.JButton();
-        jBtnGravar1 = new javax.swing.JButton();
+        jBtnAnterior = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,11 +84,11 @@ public class JanelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jBtnGravar1.setText("Anterior");
-        jBtnGravar1.setActionCommand("");
-        jBtnGravar1.addActionListener(new java.awt.event.ActionListener() {
+        jBtnAnterior.setText("Anterior");
+        jBtnAnterior.setActionCommand("");
+        jBtnAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnGravar1ActionPerformed(evt);
+                jBtnAnteriorActionPerformed(evt);
             }
         });
 
@@ -116,7 +116,7 @@ public class JanelaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnGravar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnGravar1)
+                        .addComponent(jBtnAnterior)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,7 +144,7 @@ public class JanelaCliente extends javax.swing.JFrame {
                     .addComponent(jBtnGravar)
                     .addComponent(jBtnProximo)
                     .addComponent(jBtnFechar)
-                    .addComponent(jBtnGravar1))
+                    .addComponent(jBtnAnterior))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -165,7 +165,7 @@ public class JanelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnFecharActionPerformed
 
     private void jBtnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGravarActionPerformed
-        cliente = new Cliente(jTFNome.getText(), jTFFone.getText(), (Integer) jSIdade.getValue());
+        cliente = new Cliente(jTFNome.getText(), jTFFone.getText(), (Integer) jSIdade.getValue());        
         mt.GravaCliente(cliente);
     }//GEN-LAST:event_jBtnGravarActionPerformed
 
@@ -174,9 +174,10 @@ public class JanelaCliente extends javax.swing.JFrame {
         atualizarTela();
     }//GEN-LAST:event_jBtnProximoActionPerformed
 
-    private void jBtnGravar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGravar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnGravar1ActionPerformed
+    private void jBtnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAnteriorActionPerformed
+        cliente = mt.lerRegistroAnterior();
+        atualizarTela();
+    }//GEN-LAST:event_jBtnAnteriorActionPerformed
 
     public void limparTela() {
         jTFNome.setText("");
@@ -204,9 +205,9 @@ public class JanelaCliente extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnAnterior;
     private javax.swing.JButton jBtnFechar;
     private javax.swing.JButton jBtnGravar;
-    private javax.swing.JButton jBtnGravar1;
     private javax.swing.JButton jBtnNovo;
     private javax.swing.JButton jBtnProximo;
     private javax.swing.JLabel jLabel1;

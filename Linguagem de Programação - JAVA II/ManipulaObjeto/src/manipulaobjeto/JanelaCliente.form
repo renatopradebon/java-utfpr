@@ -49,7 +49,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBtnGravar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBtnGravar1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBtnAnterior" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBtnProximo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -84,7 +84,7 @@
                   <Component id="jBtnGravar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtnProximo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtnFechar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBtnGravar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBtnAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
@@ -145,13 +145,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnProximoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnGravar1">
+    <Component class="javax.swing.JButton" name="jBtnAnterior">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anterior"/>
         <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnGravar1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAnteriorActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

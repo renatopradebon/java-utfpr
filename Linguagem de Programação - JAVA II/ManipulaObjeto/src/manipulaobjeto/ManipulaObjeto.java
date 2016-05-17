@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -34,6 +35,7 @@ public class ManipulaObjeto {
             return;//finaliza a execuçao do metodo
         }
         arquivo = fileChooser.getSelectedFile();
+
         System.out.println(fileChooser.getName());
 
         if (arquivo == null || arquivo.getName().equals("")) {
@@ -133,6 +135,10 @@ public class ManipulaObjeto {
         } else {
             try {
                 entrada = new ObjectInputStream(new FileInputStream(arquivo));
+                
+                
+                
+
             } catch (IOException ioException) {
                 JOptionPane.showMessageDialog(null, "Error ao Abrir Arquivo", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -140,6 +146,33 @@ public class ManipulaObjeto {
     }
 
     public Cliente lerRegistro() {
+        Cliente cliente = null;
+
+        if (entrada == null) {
+            abrirArquivo();
+        }
+        try {
+            cliente = (Cliente) entrada.readObject();
+
+            ArrayList<Cliente> array = new ConverteClienteParaArray().ConverteClienteParaArray(cliente);
+
+            System.out.println("Actual values: ");
+            for (Cliente value : array) {
+                System.out.println("Value = " + value.getFone());
+            }
+
+        } catch (EOFException endOfFileException) {
+            JOptionPane.showMessageDialog(null, "Nao existem mais registros no arquivo.", "Fim do Arquivo", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ioException) {
+            JOptionPane.showMessageDialog(null, "Erro durante a leitura do arquivo", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException err) {
+            JOptionPane.showMessageDialog(null, "Erro na conversao do tipo ou final do arquivo.", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            return cliente;
+        }
+    }
+
+    public Cliente lerRegistroAnterior() {
         Cliente cliente = null;
         if (entrada == null) {
             abrirArquivo();
@@ -164,6 +197,8 @@ public class ManipulaObjeto {
         }
         try {
             obj = entrada.readObject();
+
+            //entrada.readFields();
         } catch (EOFException endOfFileException) {
             JOptionPane.showMessageDialog(null, "Nao existem mais registros no arquivo.", "Fim do Arquivo", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ioException) {
