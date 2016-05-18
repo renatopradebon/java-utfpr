@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package manipulaobjeto;
 
 import java.io.Serializable;
 
 /**
- * @author fabricio
+ *
+ * @author Renato Pradebon
  */
 public class Cliente implements Serializable {
 

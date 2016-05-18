@@ -1,6 +1,5 @@
 package manipulaobjeto;
 
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,18 +11,27 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
- * @author fabricio@utfpr.edu.br
+ *
+ * @author Renato Pradebon
  */
 public class ManipulaObjeto {
 
     private File arquivo;
     private ObjectInputStream entrada;
     private ObjectOutputStream saida;
+    private ArrayList<Cliente> arrayCliente;
+    private int posicaoArray;
+    private int tamanhoArray;
+    private final String tipoVisualizacaoProximo = "p";
+    private final String tipoVisualizacaoAnterior = "a";
 
     public void ManipulaObjeto() {
         arquivo = null;
         entrada = null;
         saida = null;
+        arrayCliente = null;
+        posicaoArray = 0;
+        tamanhoArray = 0;
     }
 
     public void criarArquivo() {
@@ -42,22 +50,8 @@ public class ManipulaObjeto {
             JOptionPane.showMessageDialog(null, "Nome de Arquivo Inválido", "Nome de Arquivo Inválido", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                /* o condicional para gravacao do cabecalho 
-                 * eh necessario apenas quando forem gravados
-                 * multiplos objetos em arquivo.
-                 */
-                //if (arquivo.exists()) {
-                //    saida = new ObjectOutputStream(new FileOutputStream(arquivo, true)) {
-                //        @Override
-                //        protected void writeStreamHeader() {
-                //            // do not write a header
-                //        }
-                //    };
-                //    System.out.println("arquivo existe");
-                //} else {
                 saida = new ObjectOutputStream(new FileOutputStream(arquivo, false));
-                //    System.out.println("arquivo NAO existe");
-                //}
+
             } catch (IOException ioException) {
                 JOptionPane.showMessageDialog(null, "Erro ao Abrir Arquivo", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -92,7 +86,7 @@ public class ManipulaObjeto {
         }
     }
 
-    public void GravaObjeto(Object obj) {
+    public void GravaObjeto(Object obj) throws ClassNotFoundException {
         if (saida == null) {
             criarArquivo();
         }
@@ -107,7 +101,7 @@ public class ManipulaObjeto {
         }
     }
 
-    public void reset() {
+    public void reset() throws ClassNotFoundException {
         if (arquivo != null) {
             try {
                 entrada = new ObjectInputStream(new FileInputStream(arquivo));
@@ -120,7 +114,7 @@ public class ManipulaObjeto {
         }
     }
 
-    public void abrirArquivo() {
+    public void abrirArquivo() throws ClassNotFoundException {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int result = fileChooser.showOpenDialog(null);
@@ -135,9 +129,10 @@ public class ManipulaObjeto {
         } else {
             try {
                 entrada = new ObjectInputStream(new FileInputStream(arquivo));
-                
-                
-                
+
+                arrayCliente = ConvertStreamToArray.convertStreamToArray(arquivo);
+
+                tamanhoArray = arrayCliente.size();
 
             } catch (IOException ioException) {
                 JOptionPane.showMessageDialog(null, "Error ao Abrir Arquivo", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -145,68 +140,45 @@ public class ManipulaObjeto {
         }
     }
 
-    public Cliente lerRegistro() {
+    public Cliente lerRegistro() throws ClassNotFoundException {
+        return retornaObjetoCliente(tipoVisualizacaoProximo);
+    }
+
+    public Cliente lerRegistroAnterior() throws ClassNotFoundException {
+        return retornaObjetoCliente(tipoVisualizacaoAnterior);
+    }
+
+    public Cliente retornaObjetoCliente(String tipoVisualizacao) throws ClassNotFoundException {
         Cliente cliente = null;
 
         if (entrada == null) {
             abrirArquivo();
         }
         try {
-            cliente = (Cliente) entrada.readObject();
+            setPosicaoAtualArrayCliente(tipoVisualizacao);
+            cliente = (Cliente) arrayCliente.get(posicaoArray);
 
-            ArrayList<Cliente> array = new ConverteClienteParaArray().ConverteClienteParaArray(cliente);
+        } catch (NumberFormatException err) {
+            JOptionPane.showMessageDialog(null, "Erro na conversao do tipo ou final do arquivo.", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            return cliente;
+        }
+    }
 
-            System.out.println("Actual values: ");
-            for (Cliente value : array) {
-                System.out.println("Value = " + value.getFone());
+    public void setPosicaoAtualArrayCliente(String tipoVisualizacao) {
+
+        if (tipoVisualizacao.equals("p")) {
+            if (posicaoArray == tamanhoArray) {
+                posicaoArray = 0;
+            } else {
+                posicaoArray++;
             }
-
-        } catch (EOFException endOfFileException) {
-            JOptionPane.showMessageDialog(null, "Nao existem mais registros no arquivo.", "Fim do Arquivo", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ioException) {
-            JOptionPane.showMessageDialog(null, "Erro durante a leitura do arquivo", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
-        } catch (NumberFormatException err) {
-            JOptionPane.showMessageDialog(null, "Erro na conversao do tipo ou final do arquivo.", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            return cliente;
-        }
-    }
-
-    public Cliente lerRegistroAnterior() {
-        Cliente cliente = null;
-        if (entrada == null) {
-            abrirArquivo();
-        }
-        try {
-            cliente = (Cliente) entrada.readObject();
-        } catch (EOFException endOfFileException) {
-            JOptionPane.showMessageDialog(null, "Nao existem mais registros no arquivo.", "Fim do Arquivo", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ioException) {
-            JOptionPane.showMessageDialog(null, "Erro durante a leitura do arquivo", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
-        } catch (NumberFormatException err) {
-            JOptionPane.showMessageDialog(null, "Erro na conversao do tipo ou final do arquivo.", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            return cliente;
-        }
-    }
-
-    public Object lerObjeto() {
-        Object obj = null;
-        if (entrada == null) {
-            abrirArquivo();
-        }
-        try {
-            obj = entrada.readObject();
-
-            //entrada.readFields();
-        } catch (EOFException endOfFileException) {
-            JOptionPane.showMessageDialog(null, "Nao existem mais registros no arquivo.", "Fim do Arquivo", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ioException) {
-            JOptionPane.showMessageDialog(null, "Erro durante a leitura do arquivo", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
-        } catch (NumberFormatException err) {
-            JOptionPane.showMessageDialog(null, "Erro na conversao do tipo ou final do arquivo.", "Erro de Leitura", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            return obj;
+        } else if (tipoVisualizacao.equals("a")) {
+            if (posicaoArray == 0) {
+                posicaoArray = tamanhoArray;
+            } else {
+                posicaoArray--;
+            }
         }
     }
 }

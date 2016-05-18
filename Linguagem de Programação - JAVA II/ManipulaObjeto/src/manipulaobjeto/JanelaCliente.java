@@ -1,29 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
- * JanelaCliente.java
- */
 package manipulaobjeto;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author fabricio@utfpr.edu.br
+ * @author Renato Pradebon
  */
 public class JanelaCliente extends javax.swing.JFrame {
 
     private Cliente cliente = null;
-//    private ManipulaTexto mt = null;
-    private ManipulaObjeto mt = null;
+    private ManipulaObjeto manipulaObjeto = null;
 
     /**
      * Creates new form JanelaCliente
      */
     public JanelaCliente() {
-//        mt = new ManipulaTexto();
-        mt = new ManipulaObjeto();
+        manipulaObjeto = new ManipulaObjeto();
         initComponents();
     }
 
@@ -47,6 +40,8 @@ public class JanelaCliente extends javax.swing.JFrame {
         jBtnGravar = new javax.swing.JButton();
         jBtnProximo = new javax.swing.JButton();
         jBtnAnterior = new javax.swing.JButton();
+        jBtnLimparLista = new javax.swing.JButton();
+        jBtnCarregarLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,60 +87,83 @@ public class JanelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jBtnLimparLista.setLabel("Limpar Lista");
+        jBtnLimparLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimparListaActionPerformed(evt);
+            }
+        });
+
+        jBtnCarregarLista.setLabel("Carregar Lista");
+        jBtnCarregarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCarregarListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jSIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 194, Short.MAX_VALUE))
                             .addComponent(jTFNome)
-                            .addComponent(jTFFone)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtnNovo)
+                            .addComponent(jTFFone))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnGravar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnFechar)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBtnGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jBtnLimparLista)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jBtnAnterior)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBtnProximo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBtnCarregarLista))))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnNovo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTFFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnGravar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jSIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnNovo)
-                    .addComponent(jBtnGravar)
                     .addComponent(jBtnProximo)
-                    .addComponent(jBtnFechar)
-                    .addComponent(jBtnAnterior))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(jBtnAnterior)
+                    .addComponent(jBtnCarregarLista))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnLimparLista)
+                    .addComponent(jBtnFechar))
+                .addGap(6, 6, 6))
         );
 
         setSize(new java.awt.Dimension(499, 245));
@@ -158,26 +176,39 @@ public class JanelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnNovoActionPerformed
 
     private void jBtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFecharActionPerformed
-        if (mt != null) {
-            mt.fecharArquivo();
+        if (manipulaObjeto != null) {
+            manipulaObjeto.fecharArquivo();
         }
         System.exit(0);
     }//GEN-LAST:event_jBtnFecharActionPerformed
 
     private void jBtnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGravarActionPerformed
-        cliente = new Cliente(jTFNome.getText(), jTFFone.getText(), (Integer) jSIdade.getValue());        
-        mt.GravaCliente(cliente);
+        cliente = new Cliente(jTFNome.getText(), jTFFone.getText(), (Integer) jSIdade.getValue());
+        manipulaObjeto.GravaCliente(cliente);
     }//GEN-LAST:event_jBtnGravarActionPerformed
 
     private void jBtnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnProximoActionPerformed
-        cliente = mt.lerRegistro();
-        atualizarTela();
+        leitorBotaoProximo();
     }//GEN-LAST:event_jBtnProximoActionPerformed
 
     private void jBtnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAnteriorActionPerformed
-        cliente = mt.lerRegistroAnterior();
+        try {
+            cliente = manipulaObjeto.lerRegistroAnterior();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JanelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
         atualizarTela();
     }//GEN-LAST:event_jBtnAnteriorActionPerformed
+
+    private void jBtnLimparListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparListaActionPerformed
+        destroiObjetos();
+        limparTela();
+    }//GEN-LAST:event_jBtnLimparListaActionPerformed
+
+    private void jBtnCarregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCarregarListaActionPerformed
+        leitorBotaoProximo();
+    }//GEN-LAST:event_jBtnCarregarListaActionPerformed
 
     public void limparTela() {
         jTFNome.setText("");
@@ -193,6 +224,20 @@ public class JanelaCliente extends javax.swing.JFrame {
         }
     }
 
+    public void destroiObjetos() {
+        cliente = null;
+        manipulaObjeto = new ManipulaObjeto();
+    }
+
+    public void leitorBotaoProximo() {
+        try {
+            cliente = manipulaObjeto.lerRegistro();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JanelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        atualizarTela();
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -206,8 +251,10 @@ public class JanelaCliente extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAnterior;
+    private javax.swing.JButton jBtnCarregarLista;
     private javax.swing.JButton jBtnFechar;
     private javax.swing.JButton jBtnGravar;
+    private javax.swing.JButton jBtnLimparLista;
     private javax.swing.JButton jBtnNovo;
     private javax.swing.JButton jBtnProximo;
     private javax.swing.JLabel jLabel1;

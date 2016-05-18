@@ -1,46 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package manipulaobjeto;
 
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 /**
  *
- * @author renatopradebon
+ * @author Renato Pradebon
  */
 public class ConvertStreamToArray {
 
-    public static ArrayList<ArrayList> convertStreamToArray(InputStream arquivo) throws IOException {
+    public static ArrayList<Cliente> convertStreamToArray(File arquivo) throws IOException, ClassNotFoundException {
+        ArrayList<Cliente> array = new ArrayList<>();
+
         if (arquivo != null) {
-            StringBuilder sb = new StringBuilder();
-            
-            String line;
-            ArrayList<ArrayList> array = null;
-            String arrayCliente[] = null;
-            
             try {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(arquivo, "UTF-8"));
+                ObjectInputStream reader= new ObjectInputStream(new FileInputStream(arquivo));
+
                 int contador = 0;
-                while ((line = reader.readLine()) != null) {
-                    arrayCliente['idade'] = 'teste';
-                    
-                    array.add(contador, arrayCliente);
+                while (true) {
+                    array.add(contador, (Cliente) reader.readObject());
                     //sb.append(line).append("\n");
                     contador++;
                 }
-            } finally {
-                arquivo.close();
+            } catch (IOException erro) {
+                
             }
-            return null;
-        } else {
-            return null;
         }
+
+        return array;
     }
 }
