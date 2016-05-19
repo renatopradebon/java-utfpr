@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="livraria">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>entities.Editora</class>
+		<class>jpa2.hibernate.Editora</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
