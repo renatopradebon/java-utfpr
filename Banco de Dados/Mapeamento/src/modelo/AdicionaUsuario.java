@@ -2,7 +2,6 @@ package modelo;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -15,7 +14,7 @@ public class AdicionaUsuario {
 	public static void main(String[] args) throws IOException {
 		String caminho = new File("public/gremio.png").getCanonicalPath();
 		System.out.println(caminho);
-		
+
 		File foto = new File(caminho);
 		byte[] byteFoto = new byte[(int) foto.length()];
 
@@ -31,11 +30,11 @@ public class AdicionaUsuario {
 		try {
 			FileInputStream fileInputStreamFoto = new FileInputStream(foto);
 			fileInputStreamFoto.read(byteFoto);
-			fileInputStreamFoto.close();		
+			fileInputStreamFoto.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		usuario.setFoto(byteFoto);
 
 		manager.persist(usuario);
