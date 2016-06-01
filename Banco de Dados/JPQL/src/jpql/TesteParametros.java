@@ -1,4 +1,4 @@
-package JPQL;
+package jpql;
 
 import java.util.List;
 

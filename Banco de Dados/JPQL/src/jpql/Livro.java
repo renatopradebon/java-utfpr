@@ -1,28 +1,24 @@
-package JPQL;
-
-import java.util.ArrayList;
-import java.util.Collection;
+package jpql;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "autor")
-@NamedQuery(name="Autor.findAll", query="select a from Autor a")
-public class Autor {
-	
+@Table(name = "livro")
+@NamedQuery(name = "Livro.findByPrecoMinimo", 
+            query = "select livro from Livro livro where livro.preco >= :preco")
+public class Livro {
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String nome;
-	
-	@ManyToMany
-	private Collection<Livro> livros = new ArrayList<Livro>();
+
+	private Double preco;
 
 	public Long getId() {
 		return id;
@@ -40,12 +36,12 @@ public class Autor {
 		this.nome = nome;
 	}
 
-	public Collection<Livro> getLivros() {
-		return livros;
+	public Double getPreco() {
+		return preco;
 	}
 
-	public void setLivros(Collection<Livro> livros) {
-		this.livros = livros;
+	public void setPreco(Double preco) {
+		this.preco = preco;
 	}
 
 }
