@@ -10,6 +10,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+/**
+ * @author Renato Pradebon
+ *
+ */
 @Entity
 @Table(name = "autor")
 @NamedQuery(name="Autor.findAll", query="select a from Autor a")

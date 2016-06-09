@@ -17,7 +17,6 @@ import javax.persistence.criteria.Root;
 public class TesteCriteriaAutor {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("criteria");
 		EntityManager manager = factory.createEntityManager();
 
