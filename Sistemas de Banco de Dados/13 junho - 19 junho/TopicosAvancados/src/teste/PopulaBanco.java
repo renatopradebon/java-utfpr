@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import topicosavancados.Produto;
+import modelo.Produto;
 
 public class PopulaBanco {
 
