@@ -8,6 +8,7 @@ package servlet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -17,42 +18,42 @@ import javax.persistence.Table;
  * @author renatopradebon
  */
 @Entity
-@Table(name= "cidade")
-@NamedQuery(name="Cidade.findAll", query="select c from Cidade c")
+@Table(name = "cidade")
+@NamedQuery(name = "Cidade.findAll", query = "select c from Cidade c")
 public class Cidade {
-    
-    @Id
-    @GeneratedValue
-    private long id;
-    
-    private String nome;
-    
-    @ManyToOne
-    private Estado estado;
 
-    public long getId() {
-        return id;
-    }
+	@Id
+	@GeneratedValue
+	private long id;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	private String nome;
 
-    public String getNome() {
-        return nome;
-    }
+	@ManyToOne
+	@JoinColumn(name = "estado")
+	private Estado estado;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public Estado getEstado() {
-        return estado;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-    
-    
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 }
