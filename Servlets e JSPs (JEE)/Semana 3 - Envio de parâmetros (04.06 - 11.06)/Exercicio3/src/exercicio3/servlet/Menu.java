@@ -1,4 +1,4 @@
-package servlet;
+package exercicio3.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,8 +36,8 @@ public class Menu extends HttpServlet {
 		writer.println("        <h1>Links</h1>");
 		writer.println("        <a href=\"/Exercicio3/ListaCidades\">Lista de Cidades</a><br/>");
 		writer.println("        <a href=\"http://www.correios.com.br/para-voce\">Correios</a><br/>");
-		writer.println(
-				"        <a href=\"http://www2.correios.com.br/sistemas/rastreamento/\">Correios - Rastreamento de Objetos</a><br/>");
+		writer.println("        <a href=\"http://www2.correios.com.br/sistemas/rastreamento/\">Correios - Rastreamento de Objetos</a><br/>");
+		writer.println("        <a href=\"/Exercicio3/FormBusca\">Busca de Cidades</a><br/>");
 		writer.println("    	</div>");
 		writer.println("    </body>");
 		writer.println("</html>");
