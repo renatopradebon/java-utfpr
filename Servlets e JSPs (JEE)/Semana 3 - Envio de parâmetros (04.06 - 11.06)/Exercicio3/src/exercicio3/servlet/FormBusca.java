@@ -40,8 +40,8 @@ public class FormBusca extends HttpServlet {
 		writer.println("    	<div class=\"container\">");
 		writer.println("        	<a href=\"/Exercicio3/Menu\">Menu</a>");
 		writer.println("        	<h1>Busca de Cidades</h1>");
-		writer.println("        	<form action=\"./ResultadoBusca\" method=\"post\" " +
-                       "enctpy=\"multipart/form-data\" accept-charset=\"utf-8\">");
+		writer.println("        	<form action=\"./ResultadoBusca\" method=\"post\" "
+				+ "enctpy=\"multipart/form-data\" accept-charset=\"utf-8\">");
 		writer.println("            	<div class=\"form-group\">");
 		writer.println("        			<label for=\"busca\">Busca</label>");
 		writer.println("					<input type=\"text\" name=\"busca\">");
