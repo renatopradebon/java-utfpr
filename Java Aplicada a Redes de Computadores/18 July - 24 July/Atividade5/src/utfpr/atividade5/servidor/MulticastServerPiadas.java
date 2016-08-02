@@ -11,10 +11,17 @@ import utfpr.atividade5.servidor.leitor.LeitorPiadas;
  * @author Renato Pradebon
  *
  */
-public class MulticastServerPiadas extends Thread {
+public class MulticastServerPiadas extends Thread implements Runnable {
 	private static LeitorPiadas leitor;
+	private Boolean imprimePiadas;
 
-	public static void main(String[] args) {
+	public MulticastServerPiadas(Boolean imprimePiadas) {
+		this.imprimePiadas = imprimePiadas;
+		System.out.println("Servidor de Piadas iniciado.");
+	}
+
+	@Override
+	public void run() {
 
 		DatagramSocket socket = null;
 		DatagramPacket datagram = null;
@@ -22,6 +29,7 @@ public class MulticastServerPiadas extends Thread {
 		String enderecoInet = "224.2.2.3";
 
 		byte[] buffer;
+		// porta servidor de piadas
 		final int porta = 8888;
 
 		try {
@@ -40,7 +48,10 @@ public class MulticastServerPiadas extends Thread {
 
 				socket.send(datagram);
 
-				System.out.println("A piada de número " + contador + " é: " + piada);
+				if (imprimePiadas) {
+					System.out.println("A piada de número " + contador + " é: " + piada);
+				}
+				
 				contador++;
 				try {
 					Thread.sleep(500);
