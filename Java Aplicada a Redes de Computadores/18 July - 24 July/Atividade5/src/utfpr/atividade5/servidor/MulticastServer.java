@@ -3,6 +3,7 @@ package utfpr.atividade5.servidor;
 public class MulticastServer {
 	
 	MulticastServerPiadas piadas;
+	MulticastServerCpf cpf;
 	
 	public MulticastServer() {
 		Boolean imprimirLogs = true;
@@ -11,7 +12,9 @@ public class MulticastServer {
 		piadas = new MulticastServerPiadas(imprimirLogs);
 		piadas.run();
 		
-		
+		// inicia servidor do CPF
+//		cpf = new MulticastServerCpf(imprimirLogs);
+//		cpf.run();
 		
 	}
 
