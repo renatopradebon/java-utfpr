@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livros>
+    <livro>
+        <id>b</id>
+        <titulo>Cem anos de solidão</titulo>
+        <autor>Gabriel Garcia Marquez</autor>
+    </livro>
+    <livro>
+        <id>a</id>
+        <titulo>Código Da Vinci</titulo>
+        <autor>Dan Brown</autor>
+        <esgotado totalVendido="2500" />
+    </livro>    
+</livros>
