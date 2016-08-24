@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Chat xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="chat.xsd">
+	<Participante id="1" nome="Renato" />
+	<Participante id="2" nome="Liliane" />
+	<Mensagem>
+		<Data>2001-01-01</Data>
+		<Hora>12:00:00</Hora>
+		<Corpo>Corpo</Corpo>
+	</Mensagem>
+</Chat>

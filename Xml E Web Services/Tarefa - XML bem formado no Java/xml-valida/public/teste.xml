@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<paises>
+	<pais sigla="BR">
+		<nome>Brasil</nome>
+		<moeda>Real</moeda>
+		<populacao>196655014</populacao>
+	</pais>
+	<pais sigla="CA">
+		<nome>Canadá</nome>
+		<moeda>Dólar canadense</moeda>
+		<populacao>34349561</populacao>
+	</pais>
+	<pais sigla="MX">
+		<nome>México</nome>
+		<moeda>Peso mexicano</moeda>
+		<populacao>114793341</populacao>
+	</pais>
+</paises>
