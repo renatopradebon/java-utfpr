@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalogo>
+	<cd codigo="01">Red Hot Chili Peppers</cd>
+	<cd codigo="02">Paralamas do Sucesso</cd>
+	<comentario><![CDATA[meus comentarios <b>aqui</b>. Nao mexer!!!]]></comentario>
+</catalogo>
