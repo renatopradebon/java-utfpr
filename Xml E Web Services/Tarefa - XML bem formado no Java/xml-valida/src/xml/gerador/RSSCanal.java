@@ -5,6 +5,7 @@ import java.io.StringWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -17,6 +18,58 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class RSSCanal {
+
+	private static String path = "./public/";
+	private DocumentBuilderFactory dbFactory;
+	private DocumentBuilder dBuilder;
+	private Document document;
+
+	public RSSCanal() throws ParserConfigurationException {
+		try {
+			dbFactory = DocumentBuilderFactory.newInstance();
+			dBuilder = dbFactory.newDocumentBuilder();
+			document = dBuilder.newDocument();
+
+			Element rss = document.createElement("rss");
+			rss.setAttribute("version", "2.0");
+			document.appendChild(rss);
+
+			Element channel = document.createElement("channel");
+			rss.appendChild(channel);
+
+			Element title = document.createElement("title");
+			title.setTextContent("Exemplo de Canal RSS");
+			rss.appendChild(title);
+
+			Element link = document.createElement("link");
+			link.setTextContent("https://twitter.com/renatopradebon");
+			rss.appendChild(link);
+
+			Element description = document.createElement("description");
+			description.setTextContent("Twitter - Renato Pradebon");
+			rss.appendChild(description);
+
+			imprimir(document);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+
+	public void adicionarItem(Item item) {
+		Element description = document.createElement("item");
+		description.setTextContent("Twitter - Renato Pradebon");
+//		elementoPrincipal.appendChild(description);
+	}
+
+	public void imprimir(Document document)
+			throws TransformerFactoryConfigurationError, TransformerConfigurationException {
+		// salvar em arquivo
+		transformDomToFile(document, path + "saida2X.xml");
+		// salvar como string
+		System.out.println(transformDomToString(document));
+	}
 
 	/**
 	 * 
@@ -70,40 +123,4 @@ public class RSSCanal {
 			return "error";
 		}
 	}
-	
-	public static void main(String[] args) {
-		try {
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-			Document document = dBuilder.newDocument();
-			Element rss = document.createElement("rss");
-			rss.setAttribute("version", "2.0");
-			document.appendChild(rss);
-			
-			Element channel = document.createElement("channel");
-			rss.appendChild(channel);
-			
-			Element title = document.createElement("title");
-			title.setTextContent("Exemplo de Canal RSS");
-			rss.appendChild(title);
-			
-			Element link = document.createElement("link");
-			link.setTextContent("https://twitter.com/renatopradebon");
-			rss.appendChild(link);
-			
-			Element description = document.createElement("description");
-			description.setTextContent("Twitter - Renato Pradebon");
-			rss.appendChild(description);
-			
-      		// salvar em arquivo
-			transformDomToFile(document, "./public/saida2X.xml");
-			// salvar como string
-			System.out.println(transformDomToString(document));
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-
 }
