@@ -16,7 +16,7 @@ public class SAXParserDemo {
          File inputFile = new File("input.xml");
          SAXParserFactory factory = SAXParserFactory.newInstance();
          SAXParser saxParser = factory.newSAXParser();
-         UserHandler userhandler = new UserHandler();
+         UserHandler1 userhandler = new UserHandler1();
          saxParser.parse(inputFile, userhandler);     
       } catch (Exception e) {
          e.printStackTrace();
@@ -24,7 +24,7 @@ public class SAXParserDemo {
    }   
 }
 
-class UserHandler extends DefaultHandler {
+class UserHandler1 extends DefaultHandler {
 
    boolean bFirstName = false;
    boolean bLastName = false;
