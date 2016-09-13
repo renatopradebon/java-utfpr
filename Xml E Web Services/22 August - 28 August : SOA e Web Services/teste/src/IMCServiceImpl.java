@@ -1,4 +1,3 @@
-package imcservice.wsimplementation;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,9 +5,6 @@ import java.util.Date;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
-
-import imcservice.wsinterface.DadosImc;
-import imcservice.wsinterface.IMCServiceInterface;
 
 @WebService(endpointInterface = "imcservice.wsinterface.IMCServiceInterface")
 public class IMCServiceImpl implements IMCServiceInterface {

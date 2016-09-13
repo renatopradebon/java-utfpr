@@ -1,4 +1,3 @@
-package imcservice.wsinterface;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;

@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-package imcservice.wsinterface;
-
 import java.util.Date;
 
 /**
