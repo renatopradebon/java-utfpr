@@ -1,6 +1,5 @@
 package xml.processador;
 
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 

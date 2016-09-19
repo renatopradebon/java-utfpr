@@ -12,7 +12,6 @@ import imcservice.wsinterface.IMCServiceInterface;
 
 @WebService(endpointInterface = "imcservice.wsinterface.IMCServiceInterface")
 public class IMCServiceImpl implements IMCServiceInterface {
-
 	@Resource
 	private WebServiceContext wsContext;
 	ArrayList<DadosImc> dados = new ArrayList<DadosImc>();
