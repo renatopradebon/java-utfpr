@@ -44,7 +44,7 @@ public class ABCContratacaoServiceProxy implements abccontratacao.wsinterface.AB
     return aBCContratacaoService;
   }
   
-  public java.lang.String poderContratar(java.lang.String abc_nome, int abc_idade, java.lang.String abc_cpf, org.apache.axis.types.UnsignedShort abc_sexo, java.lang.String abc_setor) throws java.rmi.RemoteException, abccontratacao.wsinterface.Exception{
+  public java.lang.String poderContratar(java.lang.String abc_nome, int abc_idade, java.lang.String abc_cpf, int abc_sexo, java.lang.String abc_setor) throws java.rmi.RemoteException, abccontratacao.wsinterface.Exception{
     if (aBCContratacaoService == null)
       _initABCContratacaoServiceProxy();
     return aBCContratacaoService.poderContratar(abc_nome, abc_idade, abc_cpf, abc_sexo, abc_setor);

@@ -1,13 +1,13 @@
 /**
- * ABCContratacaoServiceImplPortBindingStub.java
+ * IMCServiceImplPortBindingStub.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package abccontratacao.wsimplementation;
+package imcservice.wsimplementation;
 
-public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.client.Stub implements abccontratacao.wsinterface.ABCContratacaoService {
+public class IMCServiceImplPortBindingStub extends org.apache.axis.client.Stub implements imcservice.wsinterface.IMCServiceInterface {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
@@ -24,57 +24,48 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("poderContratar");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "abc_nome"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("calcularIMC");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "imc_nome"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         param.setOmittable(true);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "abc_idade"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "imc_peso"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "double"), double.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "abc_cpf"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        param.setOmittable(true);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "imc_altura"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "double"), double.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "abc_sexo"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "abc_setor"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        param.setOmittable(true);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        oper.setReturnClass(java.lang.String.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("", "abc_resposta"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "double"));
+        oper.setReturnClass(double.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "Exception"),
-                      "abccontratacao.wsinterface.Exception",
-                      new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "Exception"), 
+                      new javax.xml.namespace.QName("http://wsinterface.imcservice/", "Exception"),
+                      "imcservice.wsinterface.Exception",
+                      new javax.xml.namespace.QName("http://wsinterface.imcservice/", "Exception"), 
                       true
                      ));
         _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("consultar");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "abc_setor"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        param.setOmittable(true);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "pessoa"));
-        oper.setReturnClass(abccontratacao.wsinterface.Pessoa[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("", "abc_Pessoa"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://wsinterface.imcservice/", "dadosImc"));
+        oper.setReturnClass(imcservice.wsinterface.DadosImc[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[1] = oper;
 
     }
 
-    public ABCContratacaoServiceImplPortBindingStub() throws org.apache.axis.AxisFault {
+    public IMCServiceImplPortBindingStub() throws org.apache.axis.AxisFault {
          this(null);
     }
 
-    public ABCContratacaoServiceImplPortBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public IMCServiceImplPortBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
          this(service);
          super.cachedEndpoint = endpointURL;
     }
 
-    public ABCContratacaoServiceImplPortBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public IMCServiceImplPortBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {
@@ -94,16 +85,16 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "Exception");
+            qName = new javax.xml.namespace.QName("http://wsinterface.imcservice/", "dadosImc");
             cachedSerQNames.add(qName);
-            cls = abccontratacao.wsinterface.Exception.class;
+            cls = imcservice.wsinterface.DadosImc.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "pessoa");
+            qName = new javax.xml.namespace.QName("http://wsinterface.imcservice/", "Exception");
             cachedSerQNames.add(qName);
-            cls = abccontratacao.wsinterface.Pessoa.class;
+            cls = imcservice.wsinterface.Exception.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -174,7 +165,7 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         }
     }
 
-    public java.lang.String poderContratar(java.lang.String abc_nome, int abc_idade, java.lang.String abc_cpf, int abc_sexo, java.lang.String abc_setor) throws java.rmi.RemoteException, abccontratacao.wsinterface.Exception {
+    public double calcularIMC(java.lang.String imc_nome, double imc_peso, double imc_altura) throws java.rmi.RemoteException, imcservice.wsinterface.Exception {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -186,11 +177,11 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "poderContratar"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://wsinterface.imcservice/", "calcularIMC"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {abc_nome, new java.lang.Integer(abc_idade), abc_cpf, new java.lang.Integer(abc_sexo), abc_setor});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {imc_nome, new java.lang.Double(imc_peso), new java.lang.Double(imc_altura)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -198,9 +189,9 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         else {
             extractAttachments(_call);
             try {
-                return (java.lang.String) _resp;
+                return ((java.lang.Double) _resp).doubleValue();
             } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+                return ((java.lang.Double) org.apache.axis.utils.JavaUtils.convert(_resp, double.class)).doubleValue();
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -208,15 +199,15 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         if (axisFaultException.detail instanceof java.rmi.RemoteException) {
               throw (java.rmi.RemoteException) axisFaultException.detail;
          }
-        if (axisFaultException.detail instanceof abccontratacao.wsinterface.Exception) {
-              throw (abccontratacao.wsinterface.Exception) axisFaultException.detail;
+        if (axisFaultException.detail instanceof imcservice.wsinterface.Exception) {
+              throw (imcservice.wsinterface.Exception) axisFaultException.detail;
          }
    }
   throw axisFaultException;
 }
     }
 
-    public abccontratacao.wsinterface.Pessoa[] consultar(java.lang.String abc_setor) throws java.rmi.RemoteException {
+    public imcservice.wsinterface.DadosImc[] consultar() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -228,11 +219,11 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "consultar"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://wsinterface.imcservice/", "consultar"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {abc_setor});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -240,9 +231,9 @@ public class ABCContratacaoServiceImplPortBindingStub extends org.apache.axis.cl
         else {
             extractAttachments(_call);
             try {
-                return (abccontratacao.wsinterface.Pessoa[]) _resp;
+                return (imcservice.wsinterface.DadosImc[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (abccontratacao.wsinterface.Pessoa[]) org.apache.axis.utils.JavaUtils.convert(_resp, abccontratacao.wsinterface.Pessoa[].class);
+                return (imcservice.wsinterface.DadosImc[]) org.apache.axis.utils.JavaUtils.convert(_resp, imcservice.wsinterface.DadosImc[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

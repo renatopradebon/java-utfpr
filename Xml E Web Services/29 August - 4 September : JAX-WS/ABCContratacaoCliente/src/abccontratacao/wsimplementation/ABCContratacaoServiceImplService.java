@@ -8,11 +8,9 @@
 package abccontratacao.wsimplementation;
 
 public interface ABCContratacaoServiceImplService extends javax.xml.rpc.Service {
-	public java.lang.String getABCContratacaoServiceImplPortAddress();
+    public java.lang.String getABCContratacaoServiceImplPortAddress();
 
-	public abccontratacao.wsinterface.ABCContratacaoService getABCContratacaoServiceImplPort()
-			throws javax.xml.rpc.ServiceException;
+    public abccontratacao.wsinterface.ABCContratacaoService getABCContratacaoServiceImplPort() throws javax.xml.rpc.ServiceException;
 
-	public abccontratacao.wsinterface.ABCContratacaoService getABCContratacaoServiceImplPort(java.net.URL portAddress)
-			throws javax.xml.rpc.ServiceException;
+    public abccontratacao.wsinterface.ABCContratacaoService getABCContratacaoServiceImplPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 }

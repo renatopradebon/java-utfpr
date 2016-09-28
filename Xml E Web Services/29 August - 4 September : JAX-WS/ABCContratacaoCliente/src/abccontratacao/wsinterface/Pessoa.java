@@ -7,293 +7,274 @@
 
 package abccontratacao.wsinterface;
 
-public class Pessoa  implements java.io.Serializable {
-    private java.lang.String cpf;
+public class Pessoa implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private int idade;
+	private java.lang.String cpf;
 
-    private java.lang.String nome;
+	private int idade;
 
-    private java.lang.String resposta;
+	private java.lang.String nome;
 
-    private java.lang.String setor;
+	private java.lang.String resposta;
 
-    private org.apache.axis.types.UnsignedShort sexo;
+	private java.lang.String setor;
 
-    public Pessoa() {
-    }
+	private int sexo;
 
-    public Pessoa(
-           java.lang.String cpf,
-           int idade,
-           java.lang.String nome,
-           java.lang.String resposta,
-           java.lang.String setor,
-           org.apache.axis.types.UnsignedShort sexo) {
-           this.cpf = cpf;
-           this.idade = idade;
-           this.nome = nome;
-           this.resposta = resposta;
-           this.setor = setor;
-           this.sexo = sexo;
-    }
+	public Pessoa() {
+	}
 
+	public Pessoa(java.lang.String cpf, int idade, java.lang.String nome, java.lang.String resposta,
+			java.lang.String setor, int sexo) {
+		this.cpf = cpf;
+		this.idade = idade;
+		this.nome = nome;
+		this.resposta = resposta;
+		this.setor = setor;
+		this.sexo = sexo;
+	}
 
-    /**
-     * Gets the cpf value for this Pessoa.
-     * 
-     * @return cpf
-     */
-    public java.lang.String getCpf() {
-        return cpf;
-    }
+	/**
+	 * Gets the cpf value for this Pessoa.
+	 * 
+	 * @return cpf
+	 */
+	public java.lang.String getCpf() {
+		return cpf;
+	}
 
+	/**
+	 * Sets the cpf value for this Pessoa.
+	 * 
+	 * @param cpf
+	 */
+	public void setCpf(java.lang.String cpf) {
+		this.cpf = cpf;
+	}
 
-    /**
-     * Sets the cpf value for this Pessoa.
-     * 
-     * @param cpf
-     */
-    public void setCpf(java.lang.String cpf) {
-        this.cpf = cpf;
-    }
+	/**
+	 * Gets the idade value for this Pessoa.
+	 * 
+	 * @return idade
+	 */
+	public int getIdade() {
+		return idade;
+	}
 
+	/**
+	 * Sets the idade value for this Pessoa.
+	 * 
+	 * @param idade
+	 */
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
 
-    /**
-     * Gets the idade value for this Pessoa.
-     * 
-     * @return idade
-     */
-    public int getIdade() {
-        return idade;
-    }
+	/**
+	 * Gets the nome value for this Pessoa.
+	 * 
+	 * @return nome
+	 */
+	public java.lang.String getNome() {
+		return nome;
+	}
 
+	/**
+	 * Sets the nome value for this Pessoa.
+	 * 
+	 * @param nome
+	 */
+	public void setNome(java.lang.String nome) {
+		this.nome = nome;
+	}
 
-    /**
-     * Sets the idade value for this Pessoa.
-     * 
-     * @param idade
-     */
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
+	/**
+	 * Gets the resposta value for this Pessoa.
+	 * 
+	 * @return resposta
+	 */
+	public java.lang.String getResposta() {
+		return resposta;
+	}
 
+	/**
+	 * Sets the resposta value for this Pessoa.
+	 * 
+	 * @param resposta
+	 */
+	public void setResposta(java.lang.String resposta) {
+		this.resposta = resposta;
+	}
 
-    /**
-     * Gets the nome value for this Pessoa.
-     * 
-     * @return nome
-     */
-    public java.lang.String getNome() {
-        return nome;
-    }
+	/**
+	 * Gets the setor value for this Pessoa.
+	 * 
+	 * @return setor
+	 */
+	public java.lang.String getSetor() {
+		return setor;
+	}
 
+	/**
+	 * Sets the setor value for this Pessoa.
+	 * 
+	 * @param setor
+	 */
+	public void setSetor(java.lang.String setor) {
+		this.setor = setor;
+	}
 
-    /**
-     * Sets the nome value for this Pessoa.
-     * 
-     * @param nome
-     */
-    public void setNome(java.lang.String nome) {
-        this.nome = nome;
-    }
+	/**
+	 * Gets the sexo value for this Pessoa.
+	 * 
+	 * @return sexo
+	 */
+	public int getSexo() {
+		return sexo;
+	}
+	
+	public String getSexoExtenso() {
+		return getSexo() == 1 ? "Masculino" : "Feminino";
+	}
 
+	/**
+	 * Sets the sexo value for this Pessoa.
+	 * 
+	 * @param sexo
+	 */
+	public void setSexo(int sexo) {
+		this.sexo = sexo;
+	}
 
-    /**
-     * Gets the resposta value for this Pessoa.
-     * 
-     * @return resposta
-     */
-    public java.lang.String getResposta() {
-        return resposta;
-    }
+	private java.lang.Object __equalsCalc = null;
 
+	public synchronized boolean equals(java.lang.Object obj) {
+		if (!(obj instanceof Pessoa))
+			return false;
+		Pessoa other = (Pessoa) obj;
+		if (obj == null)
+			return false;
+		if (this == obj)
+			return true;
+		if (__equalsCalc != null) {
+			return (__equalsCalc == obj);
+		}
+		__equalsCalc = obj;
+		boolean _equals;
+		_equals = true
+				&& ((this.cpf == null && other.getCpf() == null)
+						|| (this.cpf != null && this.cpf.equals(other.getCpf())))
+				&& this.idade == other.getIdade()
+				&& ((this.nome == null && other.getNome() == null)
+						|| (this.nome != null && this.nome.equals(other.getNome())))
+				&& ((this.resposta == null && other.getResposta() == null)
+						|| (this.resposta != null && this.resposta.equals(other.getResposta())))
+				&& ((this.setor == null && other.getSetor() == null)
+						|| (this.setor != null && this.setor.equals(other.getSetor())))
+				&& this.sexo == other.getSexo();
+		__equalsCalc = null;
+		return _equals;
+	}
 
-    /**
-     * Sets the resposta value for this Pessoa.
-     * 
-     * @param resposta
-     */
-    public void setResposta(java.lang.String resposta) {
-        this.resposta = resposta;
-    }
+	private boolean __hashCodeCalc = false;
 
+	public synchronized int hashCode() {
+		if (__hashCodeCalc) {
+			return 0;
+		}
+		__hashCodeCalc = true;
+		int _hashCode = 1;
+		if (getCpf() != null) {
+			_hashCode += getCpf().hashCode();
+		}
+		_hashCode += getIdade();
+		if (getNome() != null) {
+			_hashCode += getNome().hashCode();
+		}
+		if (getResposta() != null) {
+			_hashCode += getResposta().hashCode();
+		}
+		if (getSetor() != null) {
+			_hashCode += getSetor().hashCode();
+		}
+		_hashCode += getSexo();
+		__hashCodeCalc = false;
+		return _hashCode;
+	}
 
-    /**
-     * Gets the setor value for this Pessoa.
-     * 
-     * @return setor
-     */
-    public java.lang.String getSetor() {
-        return setor;
-    }
+	// Type metadata
+	private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
+			Pessoa.class, true);
 
+	static {
+		typeDesc.setXmlType(new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "pessoa"));
+		org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("cpf");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "cpf"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setMinOccurs(0);
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("idade");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "idade"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("nome");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "nome"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setMinOccurs(0);
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("resposta");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "resposta"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setMinOccurs(0);
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("setor");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "setor"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setMinOccurs(0);
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("sexo");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "sexo"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+	}
 
-    /**
-     * Sets the setor value for this Pessoa.
-     * 
-     * @param setor
-     */
-    public void setSetor(java.lang.String setor) {
-        this.setor = setor;
-    }
+	/**
+	 * Return type metadata object
+	 */
+	public static org.apache.axis.description.TypeDesc getTypeDesc() {
+		return typeDesc;
+	}
 
+	/**
+	 * Get Custom Serializer
+	 */
+	public static org.apache.axis.encoding.Serializer getSerializer(java.lang.String mechType,
+			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
+		return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
+	}
 
-    /**
-     * Gets the sexo value for this Pessoa.
-     * 
-     * @return sexo
-     */
-    public org.apache.axis.types.UnsignedShort getSexo() {
-        return sexo;
-    }
-
-
-    /**
-     * Sets the sexo value for this Pessoa.
-     * 
-     * @param sexo
-     */
-    public void setSexo(org.apache.axis.types.UnsignedShort sexo) {
-        this.sexo = sexo;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Pessoa)) return false;
-        Pessoa other = (Pessoa) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true && 
-            ((this.cpf==null && other.getCpf()==null) || 
-             (this.cpf!=null &&
-              this.cpf.equals(other.getCpf()))) &&
-            this.idade == other.getIdade() &&
-            ((this.nome==null && other.getNome()==null) || 
-             (this.nome!=null &&
-              this.nome.equals(other.getNome()))) &&
-            ((this.resposta==null && other.getResposta()==null) || 
-             (this.resposta!=null &&
-              this.resposta.equals(other.getResposta()))) &&
-            ((this.setor==null && other.getSetor()==null) || 
-             (this.setor!=null &&
-              this.setor.equals(other.getSetor()))) &&
-            ((this.sexo==null && other.getSexo()==null) || 
-             (this.sexo!=null &&
-              this.sexo.equals(other.getSexo())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getCpf() != null) {
-            _hashCode += getCpf().hashCode();
-        }
-        _hashCode += getIdade();
-        if (getNome() != null) {
-            _hashCode += getNome().hashCode();
-        }
-        if (getResposta() != null) {
-            _hashCode += getResposta().hashCode();
-        }
-        if (getSetor() != null) {
-            _hashCode += getSetor().hashCode();
-        }
-        if (getSexo() != null) {
-            _hashCode += getSexo().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(Pessoa.class, true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://wsinterface.abccontratacao/", "pessoa"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("cpf");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "cpf"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idade");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "idade"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nome");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "nome"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("resposta");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "resposta"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("setor");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "setor"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("sexo");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "sexo"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "unsignedShort"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-    }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
-    }
+	/**
+	 * Get Custom Deserializer
+	 */
+	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.String mechType,
+			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
+		return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType, _xmlType, typeDesc);
+	}
 
 }
