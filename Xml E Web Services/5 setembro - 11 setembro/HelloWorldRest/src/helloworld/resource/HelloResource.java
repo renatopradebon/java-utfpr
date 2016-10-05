@@ -18,7 +18,7 @@ public class HelloResource {
 	@Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
 	@Path("pt-br")
 	public String getHelloPortugues() {
-		return "Ol√° mundo!!";
+		return "Ol· mundo!!";
 	}
 	
 	@GET
