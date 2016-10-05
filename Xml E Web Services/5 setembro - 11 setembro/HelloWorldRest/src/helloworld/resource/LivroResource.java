@@ -42,7 +42,7 @@ public class LivroResource {
 	@GET
 	@Produces(MediaType.APPLICATION_XML + ";charset=utf-8")
 	public Livro getLivroById(@PathParam("idLivro") long id) {
-		System.out.println("Teste => " + id);
+//		System.out.println("Teste => " + id);
 		return getLivro().getLivro(id);
 	}
 
@@ -50,7 +50,7 @@ public class LivroResource {
 	@Consumes(MediaType.APPLICATION_XML + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_XML + ";charset=utf-8")
 	public Livro addLivro(Livro livro) {
-
+//		System.out.println("Passou aqui => " + livro.toString());
 		getLivro().salvar(livro);
 		return livro;
 	}
