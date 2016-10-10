@@ -44,20 +44,6 @@ public class ListaCidades extends HttpServlet {
         }
     }
 
-    protected void service(HttpServletRequest request,
-HttpServletResponse response)
-throws ServletException, IOException {
-PrintWriter out = response.getWriter();
-out.println("<html>");
-out.println("<head>");
-out.println("<title>Primeira Servlet</title>");
-out.println("</head>");
-out.println("<body>");
-out.println("<h1>Oi mundo Servlet!</h1>");
-out.println("</body>");
-out.println("</html>");
-}
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
