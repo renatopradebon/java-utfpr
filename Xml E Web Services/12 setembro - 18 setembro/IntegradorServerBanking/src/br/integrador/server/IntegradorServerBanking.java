@@ -10,7 +10,7 @@ public class IntegradorServerBanking {
 
 		System.out.println("Serviço iniciado - IntegradorServerBanking");
 		BancarioServiceImplements servico = new BancarioServiceImplements();
-		Endpoint.publish("http://localhost:8080/bancarioservice", servico);
+		Endpoint.publish("http://localhost:8085/bancarioservice", servico);
 
 	}
 

@@ -5,7 +5,7 @@ import javax.jws.WebService;
 import br.integrador.dao.ContaDAO;
 import br.integrador.interfaces.BancarioService;
 
-@WebService(endpointInterface = "br.integrador.interfaces")
+@WebService//(endpointInterface = "br.integrador.interfaces")
 public class BancarioServiceImplements implements BancarioService {
 
 	private ContaDAO contasDao;
