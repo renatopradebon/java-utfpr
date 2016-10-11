@@ -15,7 +15,7 @@ import javax.xml.bind.Unmarshaller;
 import br.integrador.modelo.Transaction;
 
 public class TransactionXmlDAO {
-	private static final String XML_FILE = "./transactionstore.xml";
+	private static final String XML_FILE = "./public/transactionstore.xml";
 	private TransactionStore transactionStore;
 
 	public TransactionXmlDAO() {
