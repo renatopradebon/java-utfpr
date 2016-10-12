@@ -5,7 +5,7 @@ import javax.jws.WebService;
 import br.integrador.dao.ContaDAO;
 import br.integrador.interfaces.BancarioService;
 
-@WebService//(endpointInterface = "br.integrador.interfaces")
+@WebService
 public class BancarioServiceImplements implements BancarioService {
 
 	private ContaDAO contasDao;
@@ -36,8 +36,7 @@ public class BancarioServiceImplements implements BancarioService {
 
 	@Override
 	public String fecharConta(long numConta) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return contasDao.fecharContaDAO(numConta);
 	}
 
 }
