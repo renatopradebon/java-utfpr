@@ -1,18 +1,18 @@
 package br.integrador.modelo;
 
-import br.integrador.modelo.enums.TipoTransacao;
+import br.integrador.modelo.enums.TipoOperacao;
 
 public class Movimentacao {
 
-	private TipoTransacao tipoTransacao;
+	private TipoOperacao tipoTransacao;
 	private double valor;
 	private long conta;
 
-	public TipoTransacao getTipoTransacao() {
+	public TipoOperacao getTipoTransacao() {
 		return tipoTransacao;
 	}
 
-	public void setTipoTransacao(TipoTransacao tipoTransacao) {
+	public void setTipoTransacao(TipoOperacao tipoTransacao) {
 		this.tipoTransacao = tipoTransacao;
 	}
 

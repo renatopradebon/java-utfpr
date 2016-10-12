@@ -1,0 +1,6 @@
+O projeto integrador é formado por tres projetos, são eles:
+IntegradorLog   
+Integrador
+IntegradorCliente
+
+Inicializar os servidores na ordem acima.

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transacaoStore>
+    <nome>log</nome>
+    <transactionList>
+        <data>03/10/2016 23:10:03</data>
+        <descricao>CREATE</descricao>
+        <numeroConta>3</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:10:44</data>
+        <descricao>CREATE</descricao>
+        <numeroConta>4</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:21:02</data>
+        <descricao>CREATE</descricao>
+        <numeroConta>3</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:33:36</data>
+        <descricao>CRIAR</descricao>
+        <numeroConta>3</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:33:53</data>
+        <descricao>CRIAR</descricao>
+        <numeroConta>4</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:34:11</data>
+        <descricao>CRIAR</descricao>
+        <numeroConta>5</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:34:34</data>
+        <descricao>DEPOSITAR</descricao>
+        <numeroConta>5</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:34:50</data>
+        <descricao>DEPOSITAR</descricao>
+        <numeroConta>4</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+    <transactionList>
+        <data>03/10/2016 23:35:16</data>
+        <descricao>SACAR</descricao>
+        <numeroConta>3</numeroConta>
+        <tipoTransacao></tipoTransacao>
+    </transactionList>
+</transacaoStore>

@@ -8,7 +8,7 @@ import java.util.Random;
 import br.integrador.dao.exception.ContaNaoEncontrada;
 import br.integrador.modelo.Conta;
 import br.integrador.modelo.Movimentacao;
-import br.integrador.modelo.enums.TipoTransacao;
+import br.integrador.modelo.enums.TipoOperacao;
 
 public class ContaDAO {
 
@@ -29,7 +29,7 @@ public class ContaDAO {
 		return novaConta.getConta();
 	}
 
-	public String setValoresTransacao(long numConta, double valor, TipoTransacao tipoTransacao)
+	public String setValoresTransacao(long numConta, double valor, TipoOperacao tipoTransacao)
 			throws ContaNaoEncontrada {
 		try {
 			contaUtilizada = recuperaConta(numConta);
@@ -85,11 +85,11 @@ public class ContaDAO {
 	}
 
 	public String efetuarDepositoDAO(long numConta, double valor) throws ContaNaoEncontrada {
-		return setValoresTransacao(numConta, valor, TipoTransacao.DEPOSITO);
+		return setValoresTransacao(numConta, valor, TipoOperacao.DEPOSITO);
 	}
 
 	public String efetuarSaqueDAO(long numConta, double valor) throws ContaNaoEncontrada {
-		return setValoresTransacao(numConta, valor, TipoTransacao.SAQUE);
+		return setValoresTransacao(numConta, valor, TipoOperacao.SAQUE);
 	}
 
 	private String cifrao(double valor) {

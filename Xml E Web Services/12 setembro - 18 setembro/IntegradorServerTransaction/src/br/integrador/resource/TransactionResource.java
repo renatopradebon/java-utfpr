@@ -10,32 +10,32 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.integrador.dao.TransactionXmlDAO;
-import br.integrador.modelo.Transaction;
+import br.integrador.dao.TransacaoDAO;
+import br.integrador.modelo.Transacao;
 
 @Path("transaction")
 public class TransactionResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Transaction> getTransactions() {
-		TransactionXmlDAO dao = new TransactionXmlDAO();
+	public List<Transacao> getTransactions() {
+		TransacaoDAO dao = new TransacaoDAO();
 		return dao.getAll();
 	}
 
 	@Path("{account_number}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Transaction> get(@PathParam("account_number") long acNumber) {
-		TransactionXmlDAO dao = new TransactionXmlDAO();
+	public List<Transacao> get(@PathParam("account_number") long acNumber) {
+		TransacaoDAO dao = new TransacaoDAO();
 		return dao.get(acNumber);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Transaction addTransaction(Transaction transaction) {
-		TransactionXmlDAO dao = new TransactionXmlDAO();
+	public Transacao addTransaction(Transacao transaction) {
+		TransacaoDAO dao = new TransacaoDAO();
 		dao.save(transaction);
 		return transaction;
 	}

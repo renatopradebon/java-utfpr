@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://wsinterface.integrador/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://wsinterface.integrador/">
+
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+
+<xs:element name="consultarSaldo" type="tns:consultarSaldo"></xs:element>
+
+<xs:element name="consultarSaldoResponse" type="tns:consultarSaldoResponse"></xs:element>
+
+<xs:element name="criarConta" type="tns:criarConta"></xs:element>
+
+<xs:element name="criarContaResponse" type="tns:criarContaResponse"></xs:element>
+
+<xs:element name="efetuarDeposito" type="tns:efetuarDeposito"></xs:element>
+
+<xs:element name="efetuarDepositoResponse" type="tns:efetuarDepositoResponse"></xs:element>
+
+<xs:element name="efetuarSaque" type="tns:efetuarSaque"></xs:element>
+
+<xs:element name="efetuarSaqueResponse" type="tns:efetuarSaqueResponse"></xs:element>
+
+<xs:element name="fecharConta" type="tns:fecharConta"></xs:element>
+
+<xs:element name="fecharContaResponse" type="tns:fecharContaResponse"></xs:element>
+
+<xs:complexType name="efetuarSaque">
+<xs:sequence>
+<xs:element name="bs_numeroConta" type="xs:long"></xs:element>
+<xs:element name="bs_valorSacado" type="xs:double"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="efetuarSaqueResponse">
+<xs:sequence>
+<xs:element name="bs_resposta" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="criarConta">
+<xs:sequence>
+<xs:element name="bs_nomeCliente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="bs_saldoInicial" type="xs:double"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="criarContaResponse">
+<xs:sequence>
+<xs:element name="bs_numeroConta" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="efetuarDeposito">
+<xs:sequence>
+<xs:element name="bs_numeroConta" type="xs:long"></xs:element>
+<xs:element name="bs_valorDepositado" type="xs:double"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="efetuarDepositoResponse">
+<xs:sequence>
+<xs:element name="bs_resposta" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarSaldo">
+<xs:sequence>
+<xs:element name="bs_numeroConta" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarSaldoResponse">
+<xs:sequence>
+<xs:element name="bs_saldoConta" type="xs:double"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fecharConta">
+<xs:sequence>
+<xs:element name="bs_numeroConta" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fecharContaResponse">
+<xs:sequence>
+<xs:element name="bs_resposta" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
