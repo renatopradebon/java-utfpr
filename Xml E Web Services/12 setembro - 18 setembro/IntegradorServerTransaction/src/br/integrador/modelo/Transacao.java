@@ -9,22 +9,23 @@ import br.integrador.modelo.enums.TransacaoTipo;
 @XmlRootElement
 public class Transacao {
 
-	private long conta;
+	private long numConta;
 	private String descricao;
 	private Date data;
-	private TransacaoTipo transactionType;
+	private TransacaoTipo transacaoTipo;
 
-	public Transacao() {
-		this.conta = 0l;
-		this.descricao = "";
+//	public Transacao() {
+//		this.numConta = 0l;
+//		this.descricao = "";
+//		this.data = Calendar.getInstance().getTime();
+//	}
+
+	public long getNumConta() {
+		return numConta;
 	}
 
-	public long getConta() {
-		return conta;
-	}
-
-	public void setConta(long conta) {
-		this.conta = conta;
+	public void setNumConta(long numConta) {
+		this.numConta = numConta;
 	}
 
 	public String getDescricao() {
@@ -43,18 +44,18 @@ public class Transacao {
 		this.data = data;
 	}
 
-	public TransacaoTipo getTransactionType() {
-		return transactionType;
+	public TransacaoTipo getTransacaoTipo() {
+		return transacaoTipo;
 	}
 
-	public void setTransactionType(TransacaoTipo transactionType) {
-		this.transactionType = transactionType;
+	public void setTransacaoTipo(TransacaoTipo transacaoTipo) {
+		this.transacaoTipo = transacaoTipo;
 	}
 
 	@Override
 	public String toString() {
-		return "Transacao [conta=" + conta + ", descricao=" + descricao + ", data=" + data + ", transactionType="
-				+ transactionType + "]";
+		return "Transacao [numConta=" + numConta + ", descricao=" + descricao + ", data=" + data + ", transacaoTipo="
+				+ transacaoTipo + "]";
 	}
 
 }

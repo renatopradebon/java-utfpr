@@ -3,7 +3,7 @@ package br.integrador.server;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 
-public class IntegradorServerTransaction {
+public class IntegradorServerTransacao {
 
 	public static void main(String[] args) {
 		try {
