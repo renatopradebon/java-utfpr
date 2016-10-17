@@ -1,7 +1,7 @@
 package br.integrador.modelo.enums;
 
 public enum TransacaoTipo {
-	CRIACAO("Abertura", "da"), SAQUE("Saque", "na"), DEPOSITO("Depósito", "na"), FECHAMENTO("Encerramento", "na");
+	CRIACAO("Abertura", "da"), SAQUE("Saque", "na"), DEPOSITO("DepÃ³sito", "na"), FECHAMENTO("Encerramento", "na");
 
 	private TransacaoTipo(String nomeTransacao, String tipoOperacaoString) {
 		this.nomeTransacao = nomeTransacao;

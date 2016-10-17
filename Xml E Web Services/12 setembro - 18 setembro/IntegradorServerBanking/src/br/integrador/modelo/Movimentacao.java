@@ -4,16 +4,16 @@ import br.integrador.modelo.enums.TipoOperacao;
 
 public class Movimentacao {
 
-	private TipoOperacao tipoTransacao;
+	private TipoOperacao tipoOperacao;
 	private double valor;
 	private long conta;
 
-	public TipoOperacao getTipoTransacao() {
-		return tipoTransacao;
+	public TipoOperacao getTipoOperacao() {
+		return tipoOperacao;
 	}
 
-	public void setTipoTransacao(TipoOperacao tipoTransacao) {
-		this.tipoTransacao = tipoTransacao;
+	public void setTipoOperacao(TipoOperacao tipoOperacao) {
+		this.tipoOperacao = tipoOperacao;
 	}
 
 	public double getValor() {

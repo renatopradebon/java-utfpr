@@ -22,7 +22,7 @@ public class BancarioServiceImplementsServiceLocator extends org.apache.axis.cli
     }
 
     // Use to get a proxy class for BancarioServiceImplementsPort
-    private java.lang.String BancarioServiceImplementsPort_address = "http://localhost:8085/bancarioservice";
+    private java.lang.String BancarioServiceImplementsPort_address = "http://localhost:3030/bancarioservice";
 
     public java.lang.String getBancarioServiceImplementsPortAddress() {
         return BancarioServiceImplementsPort_address;

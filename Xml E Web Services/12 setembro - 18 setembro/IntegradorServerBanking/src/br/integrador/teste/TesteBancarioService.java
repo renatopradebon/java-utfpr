@@ -13,11 +13,11 @@ public class TesteBancarioService {
 		System.out.println("Conta numero => " + contaRenato);
 
 		System.out.println("Saldo Renato " + banco.consultarSaldo(contaRenato));
-		banco.efetuarDeposito(0, 500);
+//		banco.efetuarDeposito(0, 500);
 		banco.efetuarDeposito(contaRenato, 700);
 		banco.efetuarDeposito(contaRenato, 300);
 		banco.efetuarSaque(contaRenato, 1300);
-		System.out.println("Saldo final => " + banco.consultarSaldo(0));
+		System.out.println("Saldo final => " + banco.consultarSaldo(contaRenato));
 
 		System.out.println("Saldo Carol " + banco.consultarSaldo(contaCarol));
 		System.out.println(banco.efetuarDeposito(contaCarol, 500));
@@ -26,10 +26,10 @@ public class TesteBancarioService {
 		System.out.println(banco.efetuarSaque(contaCarol, 1300));
 		System.out.println("Saldo final => " + banco.consultarSaldo(contaCarol));
 		
-		System.out.println("-----------------------------------------------");
-		System.out.println("Saldo Renato " + banco.consultarSaldo(contaRenato));
-		System.out.println(banco.fecharConta(contaRenato));
-		System.out.println("Saldo Renato " + banco.consultarSaldo(contaRenato));
+//		System.out.println("-----------------------------------------------");
+//		System.out.println("Saldo Renato " + banco.consultarSaldo(contaRenato));
+//		System.out.println(banco.fecharConta(contaRenato));
+//		System.out.println("Saldo Renato " + banco.consultarSaldo(contaRenato));
 	}
 
 }

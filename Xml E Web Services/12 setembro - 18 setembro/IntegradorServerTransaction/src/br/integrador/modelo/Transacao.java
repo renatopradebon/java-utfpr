@@ -14,12 +14,6 @@ public class Transacao {
 	private Date data;
 	private TransacaoTipo transacaoTipo;
 
-//	public Transacao() {
-//		this.numConta = 0l;
-//		this.descricao = "";
-//		this.data = Calendar.getInstance().getTime();
-//	}
-
 	public long getNumConta() {
 		return numConta;
 	}

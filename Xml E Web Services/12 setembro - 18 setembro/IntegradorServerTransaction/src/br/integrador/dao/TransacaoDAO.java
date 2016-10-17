@@ -3,23 +3,31 @@ package br.integrador.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.integrador.bd.TransacaoBD;
 import br.integrador.modelo.Transacao;
 
 public class TransacaoDAO {
-	private static final String PATH_XML = "./public/transacoesDB.xml";
 
-	private List<Transacao> transacoes;
+	private TransacaoBD transacaoBD;
 
 	public TransacaoDAO() {
-		transacoes = new ArrayList<>();
+		transacaoBD = new TransacaoBD();
 	}
 
-	public void criarTransacao(Transacao novaTransacao) {
-		transacoes.add(novaTransacao);
+	public Transacao criarTransacao(Transacao novaTransacao) {
+		transacaoBD.getTransacoes().add(novaTransacao);
+		setTransacaoXML();
+		return novaTransacao;
+	}
+
+	public void setTransacaoXML() {
+		TransacaoXML transacaoXML = new TransacaoXML();
+		transacaoXML.setTransacaoBD(transacaoBD);
+		transacaoXML.saveXML();
 	}
 
 	public List<Transacao> getTransacoes() {
-		return transacoes;
+		return transacaoBD.getTransacoes();
 	}
 
 	public List<Transacao> getTransacao(long numConta) {

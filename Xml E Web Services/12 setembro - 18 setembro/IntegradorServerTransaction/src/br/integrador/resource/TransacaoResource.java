@@ -35,6 +35,7 @@ public class TransacaoResource {
 		return transacaoDao.getTransacao(numConta);
 	}
 
+	@Path("nova-transacao")
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.APPLICATION_XML)
