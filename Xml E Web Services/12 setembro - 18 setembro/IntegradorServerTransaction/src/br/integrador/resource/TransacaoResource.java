@@ -23,22 +23,22 @@ public class TransacaoResource {
 	}
 
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_XML + ";charset=utf-8")
 	public List<Transacao> getTransacoes() {
 		return transacaoDao.getTransacoes();
 	}
 
 	@Path("{conta_numero}")
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_XML + ";charset=utf-8")
 	public List<Transacao> getTransacao(@PathParam("conta_numero") long numConta) {
 		return transacaoDao.getTransacao(numConta);
 	}
 
 	@Path("nova-transacao")
 	@POST
-	@Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_XML + ";charset=utf-8")
+	@Produces(MediaType.APPLICATION_XML + ";charset=utf-8")
 	public Transacao criarTransacao(Transacao transacao) {
 		transacaoDao.criarTransacao(transacao);
 		return transacao;

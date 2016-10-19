@@ -5,13 +5,18 @@ import java.text.DecimalFormat;
 
 import javax.xml.rpc.ServiceException;
 
+import br.integrador.bd.TransacaoBD;
 import br.integrador.cliente.indata.InData;
+import br.integrador.cliente.transacao.IntegradorClienteTransacao;
 import br.integrador.implementacoes.BancarioServiceImplements;
 import br.integrador.implementacoes.BancarioServiceImplementsServiceLocator;
 import br.integrador.implementacoes.Exception;
+import br.integrador.modelo.Transacao;
 
 public class ClienteIntegrador {
 
+	private static String LISTA_TRANSACOES_VAZIA = "Não existem dados de transações.";
+	private static String LISTA_TRANSACOES_CONTA_VAZIA = "Não existem dados de transações para a conta ";
 	private BancarioServiceImplementsServiceLocator acessor;
 	private BancarioServiceImplements servico;
 	private static InData in;
@@ -61,13 +66,13 @@ public class ClienteIntegrador {
 				fecharConta();
 				break;
 			case 6:
-
+				ListarTransacoesConta();
 				break;
 			case 7:
-
+				ListarTransacoes();
 				break;
 			case 8:
-				System.exit(0);
+				Sair();
 
 				break;
 
@@ -78,42 +83,99 @@ public class ClienteIntegrador {
 		}
 	}
 
-	private void fecharConta() throws Exception, RemoteException {
-		long contaNumero = recebeNumeroConta();
+	private void Sair() {
+		System.out.println("Obrigado por utilizar os nossos serviços.");
 
-		System.out.println(servico.fecharConta(contaNumero));
+		System.exit(0);
+	}
+
+	private void ListarTransacoes() throws Exception {
+
+		IntegradorClienteTransacao integradorCliente = new IntegradorClienteTransacao();
+
+		TransacaoBD transacaoBD = integradorCliente.recuperaTransacoes();
+
+		if (!transacaoBD.getTransacao().isEmpty()) {
+
+			System.out.println("Listando todas as transações");
+			for (Transacao transacao : transacaoBD.getTransacao()) {
+				System.out.println(transacao.toString());
+			}
+		} else {
+			System.out.println(LISTA_TRANSACOES_VAZIA);
+		}
+
+	}
+
+	private void ListarTransacoesConta() throws Exception {
+
+		long numConta = recebeNumeroConta();
+
+		IntegradorClienteTransacao integradorCliente = new IntegradorClienteTransacao();
+		integradorCliente.setNumConta(numConta);
+
+		TransacaoBD transacaoBD = integradorCliente.recuperaTransacoes();
+
+		if (!transacaoBD.getTransacao().isEmpty()) {
+
+			System.out.println("Listando todas as transações da conta " + numConta + ".");
+
+			for (Transacao transacao : transacaoBD.getTransacao()) {
+				System.out.println(transacao.toString());
+			}
+		} else {
+			System.out.println(LISTA_TRANSACOES_CONTA_VAZIA + numConta + ".");
+		}
+	}
+
+	private void fecharConta() throws Exception, RemoteException {
+		long numConta = recebeNumeroConta();
+
+		System.out.println(servico.fecharConta(numConta));
 
 	}
 
 	private void efetuarSaque() throws Exception, RemoteException {
-		long contaNumero = recebeNumeroConta();
+		long numConta = recebeNumeroConta();
 
 		double valorSaque = Double.parseDouble(in.entra("\nValor do saque: "));
 
-		System.out.println(servico.efetuarSaque(contaNumero, valorSaque));
+		System.out.println(servico.efetuarSaque(numConta, valorSaque));
 
 	}
 
 	private long recebeNumeroConta() {
-		System.out.println("Entre com os dados da conta:");
 
-		return Long.parseLong(in.entra("\nNúmero da conta: "));
+		Boolean testaInt = true;
+		long conta = (long) 0;
+		while (testaInt) {
+			try {
+				conta = Long.parseLong(in.entra("\nEntre com os dados da conta: "));
+				testaInt = false;
+			} catch (NumberFormatException erro) {
+				System.out.println("\nA opção deve ser numérico!");
+			}
+		}
+		
+		System.out.println("");
+
+		return conta;
 	}
 
 	private void efetuarDeposito() throws Exception, RemoteException {
-		long contaNumero = recebeNumeroConta();
+		long numConta = recebeNumeroConta();
 
 		double valorDeposito = Double.parseDouble(in.entra("\nValor do depósito: "));
 
-		System.out.println(servico.efetuarDeposito(contaNumero, valorDeposito));
+		System.out.println(servico.efetuarDeposito(numConta, valorDeposito));
 
 	}
 
 	private void consultarSaldoConta() throws Exception, RemoteException {
-		long contaNumero = recebeNumeroConta();
+		long numConta = recebeNumeroConta();
 
-		System.out.println("O saldo da conta de número " + contaNumero + " é de "
-				+ cifrao(servico.consultarSaldo(contaNumero)) + ".");
+		System.out.println(
+				"O saldo da conta de número " + numConta + " é de " + cifrao(servico.consultarSaldo(numConta)) + ".");
 
 	}
 
@@ -128,9 +190,9 @@ public class ClienteIntegrador {
 		String nome = in.entra("\nNome do cliente: ");
 		double saldoInicial = Double.parseDouble(in.entra("\nSaldo inicial da conta: "));
 
-		long contaNumero = servico.criarConta(nome, saldoInicial);
+		long numConta = servico.criarConta(nome, saldoInicial);
 
-		System.out.println("Conta de número " + contaNumero + " cadastrada com sucesso!");
+		System.out.println("Conta de número " + numConta + " cadastrada com sucesso!");
 
 	}
 

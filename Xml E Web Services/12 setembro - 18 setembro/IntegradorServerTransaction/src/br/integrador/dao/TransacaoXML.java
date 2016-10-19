@@ -10,46 +10,63 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import br.integrador.bd.TransacaoBD;
+import br.integrador.modelo.Transacao;
 
 public class TransacaoXML {
 
 	private static final String PATH_XML = "./public/transacoesBD.xml";
 
-	private TransacaoBD transacaoBD;
+	private Transacao transacao;
 	private TransacaoBD transacoesAtuais;
-	private List<TransacaoBD> transacoesBD;
-
-	public TransacaoBD getTransacaoBD() {
-		return transacaoBD;
-	}
-
-	public void setTransacaoBD(TransacaoBD transacaoBD) {
-		this.transacaoBD = transacaoBD;
-	}
 
 	public TransacaoXML() {
-		transacoesBD = new ArrayList<>();
 
 		try {
 			JAXBContext context = JAXBContext.newInstance(TransacaoBD.class);
 			Unmarshaller um = context.createUnmarshaller();
 			transacoesAtuais = (TransacaoBD) um.unmarshal(new FileReader(PATH_XML));
-			// adiciona transacoes ja efetuadas
-			transacoesBD.add(transacoesAtuais);
 		} catch (Exception erro) {
 			System.out.println("Erro no XML => " + erro);
+			transacoesAtuais = new TransacaoBD();
+		}
+	}
+
+	public Transacao getTransacao() {
+		return transacao;
+	}
+
+	public void setTransacao(Transacao transacao) {
+		this.transacao = transacao;
+	}
+
+	public List<Transacao> getTransacoesAtuais() {
+		return transacoesAtuais.getTransacao();
+	}
+
+	public List<Transacao> getTransacoesAtuais(long numConta) {
+		List<Transacao> transacoesConta = new ArrayList<>();
+
+		for (Transacao transacao : getTransacoesAtuais()) {
+			if (transacao.getNumConta() == numConta) {
+				transacoesConta.add(transacao);
+			}
 		}
 
-		// adiciona nova transacao
-		transacoesBD.add(transacaoBD);
+		return transacoesConta.size() > 0 ? transacoesConta : null;
 	}
 
 	public void saveXML() {
 		try {
+			// adiciona transacoes ja efetuadas
+			getTransacoesAtuais().add(transacao);
+
 			JAXBContext context = JAXBContext.newInstance(TransacaoBD.class);
+
 			Marshaller m = context.createMarshaller();
+
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.marshal(transacoesBD, new File(PATH_XML));
+
+			m.marshal(transacoesAtuais, new File(PATH_XML));
 		} catch (Exception erro) {
 			erro.printStackTrace();
 		}

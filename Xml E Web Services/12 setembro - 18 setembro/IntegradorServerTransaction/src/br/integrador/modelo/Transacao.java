@@ -48,7 +48,8 @@ public class Transacao {
 
 	@Override
 	public String toString() {
-		return "Transacao [numConta=" + numConta + ", descricao=" + descricao + ", data=" + data + ", transacaoTipo="
+		return "\n-------------------------------------------------------------------"
+				+ "\nTransacao [numConta=" + numConta + ", \ndescricao=" + descricao + ", \ndata=" + data + ", \ntransacaoTipo="
 				+ transacaoTipo + "]";
 	}
 

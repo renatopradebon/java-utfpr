@@ -1,46 +1,35 @@
 package br.integrador.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import br.integrador.bd.TransacaoBD;
 import br.integrador.modelo.Transacao;
 
 public class TransacaoDAO {
 
-	private TransacaoBD transacaoBD;
+	private TransacaoXML transacaoXML;
 
 	public TransacaoDAO() {
-		transacaoBD = new TransacaoBD();
+		transacaoXML = new TransacaoXML();
 	}
 
 	public Transacao criarTransacao(Transacao novaTransacao) {
-		transacaoBD.getTransacoes().add(novaTransacao);
-		setTransacaoXML();
+		setTransacaoXML(novaTransacao);
 		return novaTransacao;
 	}
 
-	public void setTransacaoXML() {
-		TransacaoXML transacaoXML = new TransacaoXML();
-		transacaoXML.setTransacaoBD(transacaoBD);
+	public void setTransacaoXML(Transacao transacao) {
+		transacaoXML.setTransacao(transacao);
 		transacaoXML.saveXML();
 	}
 
 	public List<Transacao> getTransacoes() {
-		return transacaoBD.getTransacoes();
+
+		return transacaoXML.getTransacoesAtuais();
 	}
 
 	public List<Transacao> getTransacao(long numConta) {
 
-		List<Transacao> transacoesConta = new ArrayList<>();
-
-		for (Transacao transacao : getTransacoes()) {
-			if (transacao.getNumConta() == numConta) {
-				transacoesConta.add(transacao);
-			}
-		}
-
-		return transacoesConta.size() > 0 ? transacoesConta : null;
+		return transacaoXML.getTransacoesAtuais(numConta);
 	}
 
 }

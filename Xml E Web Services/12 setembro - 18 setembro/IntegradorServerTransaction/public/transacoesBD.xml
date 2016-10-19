@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transacaoes>
+    <transacao>
+        <data>2016-10-19T00:02:23.718-02:00</data>
+        <descricao>Abertura da conta de número 5337882323367403505 no valor de R$ 1.500,00</descricao>
+        <numConta>5337882323367403505</numConta>
+        <transacaoTipo>CRIACAO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:09:43.029-02:00</data>
+        <descricao>Abertura da conta de número 1022 com saldo inicial de R$ 1500,00.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>CRIACAO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:09:43.056-02:00</data>
+        <descricao>Saque na conta de número 1022 no valor de R$ 500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:09:43.075-02:00</data>
+        <descricao>Depósito na conta de número 1022 no valor de R$ 1500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>DEPOSITO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:09:43.104-02:00</data>
+        <descricao>Encerramento na conta de número 1022.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>FECHAMENTO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:09:43.125-02:00</data>
+        <descricao>Saque na conta de número 1022  no valor de R$ 250,00.</descricao>
+        <numConta>1023</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:10:50.372-02:00</data>
+        <descricao>Abertura da conta de número 1022 com saldo inicial de R$ 1500,00.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>CRIACAO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:10:50.398-02:00</data>
+        <descricao>Saque na conta de número 1022 no valor de R$ 500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:10:50.424-02:00</data>
+        <descricao>Depósito na conta de número 1022 no valor de R$ 1500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>DEPOSITO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:10:50.444-02:00</data>
+        <descricao>Encerramento na conta de número 1022.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>FECHAMENTO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:10:50.467-02:00</data>
+        <descricao>Saque na conta de número 1022  no valor de R$ 250,00.</descricao>
+        <numConta>1023</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:22.246-02:00</data>
+        <descricao>Abertura da conta de número 1022 com saldo inicial de R$ 1500,00.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>CRIACAO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:22.283-02:00</data>
+        <descricao>Saque na conta de número 1022 no valor de R$ 500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:22.307-02:00</data>
+        <descricao>Depósito na conta de número 1022 no valor de R$ 1500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>DEPOSITO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:22.333-02:00</data>
+        <descricao>Encerramento na conta de número 1022.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>FECHAMENTO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:22.359-02:00</data>
+        <descricao>Saque na conta de número 1022  no valor de R$ 250,00.</descricao>
+        <numConta>1023</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:36.060-02:00</data>
+        <descricao>Abertura da conta de número 1022 com saldo inicial de R$ 1500,00.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>CRIACAO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:36.090-02:00</data>
+        <descricao>Saque na conta de número 1022 no valor de R$ 500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:36.123-02:00</data>
+        <descricao>Depósito na conta de número 1022 no valor de R$ 1500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>DEPOSITO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:36.167-02:00</data>
+        <descricao>Encerramento na conta de número 1022.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>FECHAMENTO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:36.196-02:00</data>
+        <descricao>Saque na conta de número 1022  no valor de R$ 250,00.</descricao>
+        <numConta>1023</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:50.179-02:00</data>
+        <descricao>Abertura da conta de número 1022 com saldo inicial de R$ 1500,00.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>CRIACAO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:50.209-02:00</data>
+        <descricao>Saque na conta de número 1022 no valor de R$ 500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:50.247-02:00</data>
+        <descricao>Depósito na conta de número 1022 no valor de R$ 1500,00</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>DEPOSITO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:50.273-02:00</data>
+        <descricao>Encerramento na conta de número 1022.</descricao>
+        <numConta>1022</numConta>
+        <transacaoTipo>FECHAMENTO</transacaoTipo>
+    </transacao>
+    <transacao>
+        <data>2016-10-19T00:11:50.298-02:00</data>
+        <descricao>Saque na conta de número 1022  no valor de R$ 250,00.</descricao>
+        <numConta>1023</numConta>
+        <transacaoTipo>SAQUE</transacaoTipo>
+    </transacao>
+</transacaoes>

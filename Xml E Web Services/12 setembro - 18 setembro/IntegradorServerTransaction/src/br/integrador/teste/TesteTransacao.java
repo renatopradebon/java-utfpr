@@ -5,6 +5,7 @@ import java.util.Calendar;
 import br.integrador.dao.TransacaoDAO;
 import br.integrador.modelo.Transacao;
 import br.integrador.modelo.enums.TransacaoTipo;
+import br.integrador.resource.TransacaoResource;
 
 public class TesteTransacao {
 
@@ -22,6 +23,7 @@ public class TesteTransacao {
 		transacao1.setData(Calendar.getInstance().getTime());
 
 		transacaDao.criarTransacao(transacao1);
+		transacaDao = new TransacaoDAO();
 
 		Transacao transacao2 = new Transacao();
 		transacao2.setNumConta(1022);
@@ -32,6 +34,7 @@ public class TesteTransacao {
 		transacao2.setData(Calendar.getInstance().getTime());
 
 		transacaDao.criarTransacao(transacao2);
+		transacaDao = new TransacaoDAO();
 
 		Transacao transacao3 = new Transacao();
 		transacao3.setNumConta(1022);
@@ -42,8 +45,9 @@ public class TesteTransacao {
 		transacao3.setData(Calendar.getInstance().getTime());
 
 		transacaDao.criarTransacao(transacao3);
+		transacaDao = new TransacaoDAO();
 
-		transacaDao.criarTransacao(transacao2);
+//		transacaDao.criarTransacao(transacao2);
 
 		Transacao transacao4 = new Transacao();
 		transacao4.setNumConta(1022);
@@ -54,6 +58,7 @@ public class TesteTransacao {
 		transacao4.setData(Calendar.getInstance().getTime());
 
 		transacaDao.criarTransacao(transacao4);
+		transacaDao = new TransacaoDAO();
 
 		Transacao transacao5 = new Transacao();
 		transacao5.setNumConta(1023);
@@ -64,12 +69,16 @@ public class TesteTransacao {
 		transacao5.setData(Calendar.getInstance().getTime());
 
 		transacaDao.criarTransacao(transacao5);
-
-		for (Transacao transacao : transacaDao.getTransacoes()) {
-			System.out.println("Todas as transacoes => " + transacao.toString());
+		transacaDao = new TransacaoDAO();
+		
+		TransacaoResource transacaoResource = new TransacaoResource();
+		transacaoResource.getTransacoes();
+		
+		for (Transacao transacao : transacaoResource.getTransacoes()) {
+//			System.out.println("Todas as transacoes => " + transacao);
 		}
 
-		System.out.println("Dados da conta 1023 => " + transacaDao.getTransacao(1023).toString());
+		System.out.println("Dados da conta 1023 => " + transacaoResource.getTransacao(1023));
 
 	}
 

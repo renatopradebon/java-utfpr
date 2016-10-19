@@ -10,6 +10,7 @@ public class IntegradorServerTransacao {
 			HttpServer server = HttpServerFactory.create("http://localhost:3000/");
 
 			server.start();
+			System.out.println("Servidor de transacoes iniciado");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

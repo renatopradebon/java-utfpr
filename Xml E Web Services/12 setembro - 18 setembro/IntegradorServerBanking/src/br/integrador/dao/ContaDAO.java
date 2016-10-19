@@ -6,13 +6,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
+import br.integrador.cliente.transacao.IntegradorClienteTransacao;
 import br.integrador.dao.exception.ContaNaoEncontrada;
 import br.integrador.modelo.Conta;
 import br.integrador.modelo.Movimentacao;
 import br.integrador.modelo.Transacao;
 import br.integrador.modelo.enums.TipoOperacao;
 import br.integrador.modelo.enums.TransacaoTipo;
-import br.integrador.server.IntegradorClienteTransacao;
 
 public class ContaDAO {
 
@@ -31,10 +31,10 @@ public class ContaDAO {
 		long numConta = Math.abs(geradorNumConta.nextLong());
 		Conta novaConta = new Conta(numConta, nome, saldo);
 		contas.add(novaConta);
-		
+
 		// log de transacoes
 		adicionaTransacaoDao(TransacaoTipo.CRIACAO, novaConta.getConta(), saldo);
-		
+
 		return novaConta.getConta();
 	}
 
@@ -48,6 +48,12 @@ public class ContaDAO {
 				movimentacao.setTipoOperacao(tipoOperacao);
 				movimentacao.setValor(valor);
 				contaUtilizada.getMovimentacao().add(movimentacao);
+
+				TransacaoTipo transacaoTipo = tipoOperacao == TipoOperacao.SAQUE ? TransacaoTipo.SAQUE
+						: (tipoOperacao == TipoOperacao.DEPOSITO ? TransacaoTipo.DEPOSITO : null);
+
+				// log de transacoes
+				adicionaTransacaoDao(transacaoTipo, movimentacao);
 
 				return tipoOperacao.getNomeOperacao() + " no valor de " + cifrao(valor)
 						+ " foi realizado para o(a) Sr(a). " + contaUtilizada.getNome() + " na conta de número "
@@ -128,14 +134,14 @@ public class ContaDAO {
 
 		new IntegradorClienteTransacao().adicionaTransacao(transacao);
 	}
-	
+
 	public void adicionaTransacaoDao(TransacaoTipo transacaoTipo, long numConta, double valor) {
 		transacao = new Transacao();
 		transacao.setNumConta(numConta);
 		transacao.setTransacaoTipo(transacaoTipo);
 		transacao.setDescricao(montaStringDescricao(transacaoTipo, numConta, valor));
 		transacao.setData(Calendar.getInstance().getTime());
-		
+
 		new IntegradorClienteTransacao().adicionaTransacao(transacao);
 	}
 
@@ -144,12 +150,12 @@ public class ContaDAO {
 				+ " conta de número " + movimentacao.getConta() + " no valor de " + cifrao(movimentacao.getValor());
 		return descricao;
 	}
-	
-	private String montaStringDescricao(TransacaoTipo transacaoTipo, long numConta, double valor){
+
+	private String montaStringDescricao(TransacaoTipo transacaoTipo, long numConta, double valor) {
 		String descricao = transacaoTipo.getNomeTransacao() + " " + transacaoTipo.getTipoOperacaoString()
-		+ " conta de número " + numConta + " no valor de " + cifrao(valor);
+				+ " conta de número " + numConta + " no valor de " + cifrao(valor);
 		return descricao;
-		
+
 	}
 
 }
