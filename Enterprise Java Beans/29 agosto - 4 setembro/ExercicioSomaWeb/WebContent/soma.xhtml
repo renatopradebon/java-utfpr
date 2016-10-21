@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Soma de Números</title>
+	<h:link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+	<h:panelGroup class="container">
+		<h:form class="form-horizontal">
+			<h:panelGroup class="form-group">
+				<h:outputLabel value="Valor do Número 1:" />
+				<h:inputText value="#{somaMB.a}" />
+			</h:panelGroup>
+
+			<h:panelGroup class="form-group">
+				<h:outputLabel value="Valor do Número 2:" />
+				<h:inputText value="#{somaMB.b}" />
+			</h:panelGroup>
+
+			<h:panelGroup class="form-group">
+				<h:commandButton action="somaMB.somaNumeros" value="soma Numeros" />
+				<h:outputLabel value="Resultado:" />
+				<h:outputText value="#{somaMB.resultado}" />
+			</h:panelGroup>
+		</h:form>
+	</h:panelGroup>
+</h:body>
+
+</html>
