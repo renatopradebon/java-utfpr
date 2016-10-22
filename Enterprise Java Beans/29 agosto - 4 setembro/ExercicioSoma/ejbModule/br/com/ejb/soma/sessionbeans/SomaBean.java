@@ -7,8 +7,8 @@ import javax.ejb.Stateless;
 @Local(Soma.class)
 public class SomaBean implements Soma {
 
-	public double somaNumeros(double a, double b) {
+	public double soma(double numero1, double numero2) {
 
-		return a + b;
+		return numero1 + numero2;
 	}
 }

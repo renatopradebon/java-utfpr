@@ -11,13 +11,12 @@ public class SomaMB {
 	@EJB
 	private Soma soma;
 
-	private double a;
-	private double b;
+	private double numero1;
+	private double numero2;
 	private double resultado;
 
-	public void somaNumeros() {
-		System.out.println("teste");
-		this.resultado = this.soma.somaNumeros(a, b);
+	public void somaNumero() {
+		this.resultado = this.soma.soma(numero1, numero2);
 	}
 
 	public Soma getSoma() {
@@ -28,20 +27,20 @@ public class SomaMB {
 		this.soma = soma;
 	}
 
-	public double getA() {
-		return a;
+	public double getNumero1() {
+		return numero1;
 	}
 
-	public void setA(double a) {
-		this.a = a;
+	public void setNumero1(double numero1) {
+		this.numero1 = numero1;
 	}
 
-	public double getB() {
-		return b;
+	public double getNumero2() {
+		return numero2;
 	}
 
-	public void setB(double b) {
-		this.b = b;
+	public void setNumero2(double numero2) {
+		this.numero2 = numero2;
 	}
 
 	public double getResultado() {
@@ -51,5 +50,4 @@ public class SomaMB {
 	public void setResultado(double resultado) {
 		this.resultado = resultado;
 	}
-
 }

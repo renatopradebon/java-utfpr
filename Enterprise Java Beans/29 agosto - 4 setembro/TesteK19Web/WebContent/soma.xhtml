@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Soma de Números</title>
+	<title>Calculadora - Soma</title>
 	<h:link rel="stylesheet"
 		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 	<script
@@ -17,20 +17,20 @@
 	<h:panelGroup class="container">
 		<h:form class="form-horizontal">
 			<h:panelGroup layout="block" class="form-group">
-				<h:outputLabel value="Valor do Número 1: " />
-				<h:inputText value="#{somaMB.numero1}" />
+				<h:outputLabel value="Valor A: " />
+				<h:inputText value="#{calculadoraMB.a}" />
 			</h:panelGroup>
 
 			<h:panelGroup layout="block" class="form-group">
-				<h:outputLabel value="Valor do Número 2: " />
-				<h:inputText value="#{somaMB.numero2}" />
+				<h:outputLabel value="Valor B: " />
+				<h:inputText value="#{calculadoraMB.b}" />
 			</h:panelGroup>
 
-			<h:commandButton action="#{somaMB.somaNumero}" value="Somar" />
-			
+			<h:commandButton action="#{calculadoraMB.soma}" value="Somar" />
+
 			<h:panelGroup layout="block" class="form-group">
 				<h:outputLabel value="Resultado: " />
-				<h:outputText value="#{somaMB.resultado}" />
+				<h:outputText value="#{calculadoraMB.resultado}" />
 			</h:panelGroup>
 		</h:form>
 	</h:panelGroup>
