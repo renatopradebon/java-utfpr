@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Lista de Produtos</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        <h:panelGroup class="container">
+
+            <h1>Lista de Produtos</h1>
+
+            <h:form>
+                <h:panelGroup layout="block" class="form-group">
+                    <h:dataTable value="#{jsfProduto.all}" var="produtos" class="table">
+                        <h:column>
+                            <f:facet name="header">Código</f:facet>
+                            <h:outputText value="#{produtos.codigo}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Descrição</f:facet>
+                            <h:outputText value="#{produtos.descricao}" />
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Adicionar ao carrinho" action="#{jsfProcessoCompra.adicionaProduto(produtos)}" />
+                        </h:column>
+                    </h:dataTable>            
+                </h:panelGroup>
+            </h:form>
+
+            <h1>Carrinho de Compras</h1>
+
+            <h:form>
+                <h:panelGroup layout="block" class="form-group">
+                    <h:dataTable value="#{jsfProcessoCompra.all}" var="detalheVenda" class="table">
+                        <h:column>
+                            <f:facet name="header">Código</f:facet>
+                            <h:outputText value="#{detalheVenda.produto.codigo}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Descrição</f:facet>                            
+                            <h:outputText value="#{detalheVenda.produto.descricao}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Quantidade de Itens</f:facet>                            
+                            <h:outputText value="#{detalheVenda.quantidade}" />
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form> 
+        </h:panelGroup>
+    </h:body>
+</html>
+
