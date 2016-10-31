@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Frameworks Web</title>
+		<h:link rel="stylesheet"
+			href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script
+			src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</h:head>
+	<h:body>
+		<h:panelGroup class="container">		
+			<h:form class="form-horizontal">
+				#{testBean.nome}
+				<br />
+				<h:outputText value="#{testBean.nome}" class="btn btn-default"/>
+				<h:panelGroup layout="block" class="form-group">
+					<h:inputText value="#{testBean.nome}" />
+					<h:commandButton value="Submit" action="#{testBean.retornaNavegacao}" />
+				</h:panelGroup>
+				<a href="/AulaFrameworks/ajax.xhtml" class="btn btn-info" role="button">Gerador de Números</a>
+				<a href="/AulaFrameworks/login.xhtml" class="btn btn-info" role="button">Login</a>
+			</h:form>
+		</h:panelGroup>
+	</h:body>
+</html>

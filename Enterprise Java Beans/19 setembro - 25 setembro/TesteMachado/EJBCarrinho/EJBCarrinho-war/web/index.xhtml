@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Lista de Produtos
+        <h:form>
+            <h:dataTable value="#{jsfProduto.all}" var="prod"> 
+                <h:column>
+                    <h:outputText value="#{prod.codigo}" /> 
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{prod.descricao}" /> 
+                </h:column>
+                <h:column>
+                    <h:commandButton value="add"  action="#{jsfProcComprab.add(prod)}"/>                     
+                </h:column>
+                <h:column>
+                    <h:commandButton value="remove"  action="#{jsfProcComprab.remove(produto)}"/>                     
+                </h:column>                
+            </h:dataTable>
+        </h:form>            
+        
+        Carrinho de Compras
+        
+        <h:form>
+            <h:dataTable value="#{jsfProcComprab.all}" var="dven">
+                <h:column>
+                    <h:outputText value="#{dven.produto.codigo}" />
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{dven.produto.descricao}" />
+                </h:column>                
+                <h:column>
+                    <h:outputText value="#{dven.quantidade}" />
+                </h:column>                
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
