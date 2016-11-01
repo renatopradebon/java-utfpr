@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Frameworks Web - Second</title>
+	<title>Frameworks Web</title>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<script
@@ -14,9 +15,28 @@
 </h:head>
 <h:body>
 	<h:panelGroup class="container" layout="block">
-		<h1>
-			<h:outputText value="#{testBean.nome}" />
-		</h1>
+		<h2>Listagem de Alunos</h2>
+		<h:dataTable value="#{alunoMB.lista}" var="aluno" class="table">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{aluno.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{aluno.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Sobrenome" />
+				</f:facet>
+				<h:outputText value="#{aluno.nome}" />
+			</h:column>
+		</h:dataTable>
+		<br />
 		<a href="/AulaFrameworks">Voltar</a>
 	</h:panelGroup>
 </h:body>

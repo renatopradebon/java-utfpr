@@ -6,26 +6,27 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Frameworks Web - Ajax - Exemplo 1</title>
-	<h:link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-	<h:panelGroup class="container">
+	<h:panelGroup class="container" layout="block">
 		<h2>Exemplo 1: Número Aleatório</h2>
 		<h:form id="idF1" class="form-horizontal">
-			<h:commandButton value="Executar!" action="#{geradorNumeros.randomize}" class="btn btn-default">
-				<f:ajax render="idF1:numField1" />				
+			<h:commandButton value="Executar!"
+				action="#{geradorNumeros.randomize}" class="btn btn-default">
+				<f:ajax render="idF1:numField1" />
 			</h:commandButton>
-			
+
 			<br />
 			<h:outputText value="#{geradorNumeros.numero}" id="numField1" />
 		</h:form>
 
-		<a href="/AulaFrameworks" class="btn btn-info" role="button">Voltar</a>
+		<a href="/AulaFrameworks">Voltar</a>
 	</h:panelGroup>
 </h:body>
 </html>

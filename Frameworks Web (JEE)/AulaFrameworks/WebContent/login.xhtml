@@ -6,26 +6,37 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Frameworks Web - Ajax - Login</title>
-	<h:link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-	<h:panelGroup class="container">
+	<h:panelGroup class="container" layout="block">
 		<h2>Login de Usuário</h2>
 		<h:form id="idF1" class="form-horizontal">
-			<h:commandButton value="Executar!" action="#{geradorNumeros.randomize}" class="btn btn-default">
-				<f:ajax render="idF1:numField1" />				
-			</h:commandButton>
-			
+			<h:panelGroup layout="block" class="form-group">
+				<h:outputText value="Login:" for="user" />
+				<h:inputText value="#{loginMb.usuario.login}" id="user"
+					label="Login" required="true" class="form-control" />
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" class="form-group">
+				<h:outputText value="Senha:" for="senha" />
+				<h:inputText value="#{loginMb.usuario.senha}" id="senha"
+					label="Senha" required="true" class="form-control" />
+			</h:panelGroup>
+			<h:messages id="msgErro" class="alert alert-danger" />
+			<h:commandButton value="Entrar" action="#{loginMb.logar}"
+				class="btn btn-default" />
+
 			<br />
-			<h:outputText value="#{geradorNumeros.numero}" id="numField1" />
+
 		</h:form>
 
-		<a href="/AulaFrameworks" class="btn btn-info" role="button">Voltar</a>
+		<a href="/AulaFrameworks">Voltar</a>
 	</h:panelGroup>
 </h:body>
 </html>
