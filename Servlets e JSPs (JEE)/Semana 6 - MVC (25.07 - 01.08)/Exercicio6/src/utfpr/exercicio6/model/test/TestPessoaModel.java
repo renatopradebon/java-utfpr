@@ -9,6 +9,7 @@ import utfpr.exercicio6.model.Pessoa;
 public class TestPessoaModel {
 
 	public static void main(String[] args) {
+		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("servlet");
 		EntityManager manager = factory.createEntityManager();
 
