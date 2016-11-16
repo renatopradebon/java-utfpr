@@ -2,6 +2,7 @@ package br.com.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +20,7 @@ public class Carro implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	// @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cod_carro")
+	@GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "cod_carro")
 	@Column(name = "cod_carro", nullable = false)
 	private int codCarro;
 

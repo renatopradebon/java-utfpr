@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -23,7 +24,7 @@ public class Proprietario implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	// @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cod_proprietario")
+	@GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "cod_proprietario")
 	@Column(name = "cod_proprietario", nullable = false)
 	private int codProprietario;
 
