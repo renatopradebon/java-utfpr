@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -16,22 +14,22 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "proprietario")
+@SequenceGenerator(name = "cod_proprietario", sequenceName = "proprietario_cod_proprietario_seq", allocationSize = 1)
 public class Proprietario implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@SequenceGenerator(name = "cod_proprietario", sequenceName = "proprietario_cod_proprietario_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cod_proprietario")
+	// @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cod_proprietario")
 	@Column(name = "cod_proprietario", nullable = false)
 	private int codProprietario;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@OneToMany(mappedBy = "proprietario")
 	@Cascade(CascadeType.ALL)
 	private List<Carro> carros;
@@ -72,6 +70,5 @@ public class Proprietario implements java.io.Serializable {
 	public String toString() {
 		return "Proprietario [codProprietario=" + codProprietario + ", nome=" + nome + "]";
 	}
-	
 
 }
