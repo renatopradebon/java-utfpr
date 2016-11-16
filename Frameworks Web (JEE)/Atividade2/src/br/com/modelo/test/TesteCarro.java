@@ -90,9 +90,19 @@ public class TesteCarro {
 		listaCarros.add(carro6);
 		listaCarros.add(carro7);
 		listaCarros.add(carro8);
-
+		
 		manager.persist(proprietario);
 		manager.persist(proprietario2);
+		
+		manager.persist(carro);
+		manager.persist(carro2);
+		manager.persist(carro3);
+		manager.persist(carro4);
+		manager.persist(carro5);
+		manager.persist(carro6);
+		manager.persist(carro7);
+		manager.persist(carro8);
+
 
 		// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
 		manager.getTransaction().commit();
