@@ -32,9 +32,7 @@
 	<classpathentry kind="lib" path="/home/renatopradebon/git-repository/renato-git/java-utfpr/JAR&apos;s varios/slf4j-log4j12-1.6.4.jar"/>
 	<classpathentry kind="lib" path="/home/renatopradebon/git-repository/renato-git/java-utfpr/JAR&apos;s varios/swarmcache-1.0RC2.jar"/>
 	<classpathentry kind="lib" path="/home/renatopradebon/git-repository/renato-git/java-utfpr/JAR&apos;s varios/jpa-api-1.0.2.Final.jar"/>
-	<classpathentry kind="lib" path="/home/renatopradebon/git-repository/renato-git/java-utfpr/JAR&apos;s varios/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
 	<classpathentry kind="lib" path="/opt/apache-tomcat-8.0.33/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/home/renatopradebon/git-repository/renato-git/java-utfpr/JAR&apos;s varios/javax.servlet.jsp.jstl-1.2.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

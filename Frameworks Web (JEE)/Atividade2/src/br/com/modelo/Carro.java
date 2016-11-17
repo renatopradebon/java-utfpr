@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "carro")
 @SequenceGenerator(name = "cod_carro", sequenceName = "carro_cod_carro_seq", allocationSize = 1)
+@NamedQuery(name = "Carro.findByCod", 
+query = "select carro from Carro carro where carro.cod_carro = :cod_carro")
 public class Carro implements java.io.Serializable {
 
 	/**
