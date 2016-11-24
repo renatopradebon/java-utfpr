@@ -24,15 +24,17 @@ public class Proprietario implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "cod_proprietario")
+	@GeneratedValue // (strategy = GenerationType.SEQUENCE, generator =
+					// "cod_proprietario")
 	@Column(name = "cod_proprietario", nullable = false)
-	private int codProprietario;
+	private Integer codProprietario;
 
 	@Column(name = "nome")
 	private String nome;
 
 	@OneToMany(mappedBy = "proprietario")
 	@Cascade(CascadeType.ALL)
+	// @Cascade(CascadeType.MERGE)
 	private List<Carro> carros;
 
 	public Proprietario() {
@@ -70,6 +72,28 @@ public class Proprietario implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Proprietario [codProprietario=" + codProprietario + ", nome=" + nome + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (codProprietario != null ? codProprietario.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Proprietario)) {
+			return false;
+		}
+		Proprietario other = (Proprietario) object;
+		if ((this.codProprietario == null && other.codProprietario != null)
+				|| (this.codProprietario != null && !this.codProprietario.equals(other.codProprietario))) {
+			return false;
+		}
+		return true;
 	}
 
 }

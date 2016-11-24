@@ -13,8 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "carro")
 @SequenceGenerator(name = "cod_carro", sequenceName = "carro_cod_carro_seq", allocationSize = 1)
-@NamedQuery(name = "Carro.findByCod", 
-query = "select carro from Carro carro where carro.cod_carro = :cod_carro")
+@NamedQuery(name = "carro.findByCod", query = "SELECT c FROM Carro c WHERE c.codCarro = :codCarro")
 public class Carro implements java.io.Serializable {
 
 	/**
@@ -23,9 +22,10 @@ public class Carro implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "cod_carro")
+	@GeneratedValue // (strategy = GenerationType.SEQUENCE, generator =
+					// "cod_carro")
 	@Column(name = "cod_carro", nullable = false)
-	private int codCarro;
+	private Integer codCarro;
 
 	@Column(name = "placa")
 	private String placa;
@@ -69,6 +69,28 @@ public class Carro implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Carro [codCarro=" + codCarro + ", placa=" + placa + ", proprietario=" + proprietario.toString() + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (codCarro != null ? codCarro.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Carro)) {
+			return false;
+		}
+		Carro other = (Carro) object;
+		if ((this.codCarro == null && other.codCarro != null)
+				|| (this.codCarro != null && !this.codCarro.equals(other.codCarro))) {
+			return false;
+		}
+		return true;
 	}
 
 }

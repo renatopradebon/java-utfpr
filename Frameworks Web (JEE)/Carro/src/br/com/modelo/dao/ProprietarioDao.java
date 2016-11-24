@@ -8,53 +8,51 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import br.com.modelo.Carro;
+import br.com.modelo.Proprietario;
 
-public class CarroDAO {
+public class ProprietarioDao {
 
 	private static EntityManagerFactory entityManager = null;
 
 	public EntityManagerFactory getFactory() {
-		if (CarroDAO.entityManager == null) {
-			CarroDAO.entityManager = Persistence.createEntityManagerFactory("frameworks");
+		if (ProprietarioDao.entityManager == null) {
+			ProprietarioDao.entityManager = Persistence.createEntityManagerFactory("frameworks");
 		}
 
-		return CarroDAO.entityManager;
+		return ProprietarioDao.entityManager;
 	}
 
-	public List<Carro> busca() {
+	public List<Proprietario> busca() {
 		EntityManager entityManager = this.getFactory().createEntityManager();
 
-		TypedQuery<Carro> query = entityManager.createQuery("select carro from Carro carro", Carro.class);
+		TypedQuery<Proprietario> query = entityManager.createQuery("select p from Proprietario p", Proprietario.class);
 
-		List<Carro> livros = query.getResultList();
+		List<Proprietario> proprietarios = query.getResultList();
 
-		return livros;
+		return proprietarios;
 	}
 
-	public Carro getCarro(int codCarro) {
+	public Proprietario getProprietario(int codProprietario) {
 		EntityManager entityManager = this.getFactory().createEntityManager();
 
-		Query query = entityManager.createNamedQuery("Carro.findByCod");
+		Query query = entityManager.createNamedQuery("Proprietario.findByCod");
 
-		query.setParameter("cod_carro", codCarro);
+		query.setParameter("cod_proprietario", codProprietario);
 
-		return (Carro) query.getSingleResult();
+		return (Proprietario) query.getSingleResult();
 	}
 
-	public void save(Carro carro) {
+	public void save(Proprietario proprietario) {
 		EntityManager manager = this.getFactory().createEntityManager();
 
 		// ABRINDO A TRASACAO
 		manager.getTransaction().begin();
 
 		// OBJETO NO ESTADO MANAGED
-		manager.persist(carro);
+		manager.persist(proprietario);
 
 		// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
 		manager.getTransaction().commit();
-
-		// System.out.println("Pessoa id: " + carro.getCodCarro());
 
 		manager.close();
 		// factory.close();
