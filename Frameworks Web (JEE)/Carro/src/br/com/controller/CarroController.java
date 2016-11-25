@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.modelo.Carro;
-import br.com.modelo.Proprietario;
-import br.com.modelo.dao.ProprietarioDao;
+import br.com.modelo.dao.CarroDao;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CarroController implements Serializable {
 
 	/**
@@ -21,13 +21,23 @@ public class CarroController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Carro carro;
+	private Integer codCarro;
 	private List<Carro> listaCarros;
-	private List<Proprietario> listaProprietarios;
 
-	public CarroController() {
-		listaCarros = new ArrayList<>();		
-		
-		listaProprietarios = new ProprietarioDao().busca();
+	@PostConstruct
+	public void onInicializar(){
+		listaCarros = new ArrayList<>();
+		carro = new Carro();
+		carro.setPlaca("nnnnn");
+		listaCarros = new CarroDao().busca();
+	}
+
+	public Integer getCodCarro() {
+		return codCarro;
+	}
+
+	public void setCodCarro(Integer codCarro) {
+		this.codCarro = codCarro;
 	}
 
 	public Carro getCarro() {
@@ -46,15 +56,18 @@ public class CarroController implements Serializable {
 		this.listaCarros = listaCarros;
 	}
 
-	public List<Proprietario> getListaProprietarios() {				
-		return listaProprietarios;
+	public String adicionarCarro() {
+		CarroDao carroNovoDao = new CarroDao();
+		carroNovoDao.save(carro);
+
+		return "Carro cadastrado com sucesso!";
+
 	}
 
-	public void setListaProprietarios(List<Proprietario> listaProprietarios) {
-		this.listaProprietarios = listaProprietarios;
-	}
-	
-	public void adicionarCarro() {
-		
+	public String resetAdd() {
+		carro.setPlaca("");
+		carro.setProprietario(null);
+		return "Dados limpos";
+
 	}
 }

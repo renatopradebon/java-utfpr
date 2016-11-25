@@ -1,5 +1,6 @@
 package br.com.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,10 +14,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import br.com.modelo.interfaces.BaseEntity;
+
 @Entity
 @Table(name = "proprietario")
 @SequenceGenerator(name = "cod_proprietario", sequenceName = "proprietario_cod_proprietario_seq", allocationSize = 1)
-public class Proprietario implements java.io.Serializable {
+public class Proprietario implements Serializable, BaseEntity {
 
 	/**
 	 * 
@@ -24,8 +27,7 @@ public class Proprietario implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue // (strategy = GenerationType.SEQUENCE, generator =
-					// "cod_proprietario")
+	@GeneratedValue // (strategy = GenerationType.SEQUENCE, generator = "cod_proprietario")
 	@Column(name = "cod_proprietario", nullable = false)
 	private Integer codProprietario;
 
@@ -71,7 +73,7 @@ public class Proprietario implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Proprietario [codProprietario=" + codProprietario + ", nome=" + nome + "]";
+		return "(" + codProprietario + ") " + nome + "]";
 	}
 
 	@Override
@@ -94,6 +96,12 @@ public class Proprietario implements java.io.Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return getCodProprietario();
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +12,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import br.com.modelo.interfaces.BaseEntity;
+
 @Entity
 @Table(name = "carro")
 @SequenceGenerator(name = "cod_carro", sequenceName = "carro_cod_carro_seq", allocationSize = 1)
 @NamedQuery(name = "carro.findByCod", query = "SELECT c FROM Carro c WHERE c.codCarro = :codCarro")
-public class Carro implements java.io.Serializable {
+public class Carro implements Serializable, BaseEntity {
 
 	/**
 	 * 
@@ -68,7 +72,7 @@ public class Carro implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Carro [codCarro=" + codCarro + ", placa=" + placa + ", proprietario=" + proprietario.toString() + "]";
+		return "(" + codCarro + ") " + placa + " - " + proprietario.toString() + "]";
 	}
 
 	@Override
@@ -91,6 +95,12 @@ public class Carro implements java.io.Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return getCodCarro();
 	}
 
 }

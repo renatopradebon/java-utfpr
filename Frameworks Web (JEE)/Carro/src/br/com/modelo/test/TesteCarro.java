@@ -104,7 +104,7 @@ public class TesteCarro {
 		manager.persist(carro8);
 
 		// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
-		manager.getTransaction().commit();
+//		manager.getTransaction().commit();
 
 		System.out.println("Proprietario id: " + proprietario.getCodProprietario());
 
