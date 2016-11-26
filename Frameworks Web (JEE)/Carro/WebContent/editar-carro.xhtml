@@ -43,7 +43,7 @@
 	</nav>
 	<h:panelGroup class="container" layout="block">
 		<h:form class="form-horizontal">
-			<h2>Cadastro de Carros</h2>
+			<h2>Edição do Carro - #{carroController.carro.codCarro}</h2>
 
 			<h:panelGroup layout="block" class="form-group">
 				<h:outputText value="Placa:" for="placa"
@@ -80,8 +80,8 @@
 				<h:commandButton action="#{carroController.adicionarCarro}"
 					value="Salvar" class="btn btn-default"></h:commandButton>
 
-				<h:commandButton value="Limpar" action="#{carroController.resetAdd}"
-					class="btn btn-default" />
+				<h:commandButton value="Cancelar"
+					action="#{carroController.cancelarAcao}" class="btn btn-default" />
 
 				<h:commandLink value="Cancelar" immediate="true"
 					action="#{carroController.cancelarAcao}" class="btn btn-default" />

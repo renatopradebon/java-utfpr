@@ -1,5 +1,6 @@
 package br.com.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +24,21 @@ public class CarroController implements Serializable {
 	private Carro carro;
 	private Integer codCarro;
 	private List<Carro> listaCarros;
+	private CarroDao carroDao;
 
 	@PostConstruct
-	public void onInicializar(){
+	public void onInicializar() {
 		listaCarros = new ArrayList<>();
+		this.populaListaCarros();
+		this.criaCarro();
+		carroDao = new CarroDao();
+	}
+
+	public void criaCarro() {
 		carro = new Carro();
-		carro.setPlaca("nnnnn");
+	}
+
+	public void populaListaCarros() {
 		listaCarros = new CarroDao().busca();
 	}
 
@@ -56,18 +66,40 @@ public class CarroController implements Serializable {
 		this.listaCarros = listaCarros;
 	}
 
-	public String adicionarCarro() {
-		CarroDao carroNovoDao = new CarroDao();
-		carroNovoDao.save(carro);
+	public void adicionarCarro() {
+//		CarroDao carroNovoDao = new CarroDao();
+		Integer codCarroCadastrado = this.carroDao.save(carro);
 
-		return "Carro cadastrado com sucesso!";
+		this.criaCarro();
 
+		// return "Carro de número " + codCarroCadastrado + " cadastrado com
+		// sucesso!";
 	}
 
-	public String resetAdd() {
+	public void resetAdd() {
 		carro.setPlaca("");
 		carro.setProprietario(null);
-		return "Dados limpos";
+		// return "Dados limpos";
 
 	}
+
+	public void excluirCarro(Carro caroExcluido) {
+//		CarroDao carroNovoDao = new CarroDao();
+		this.carroDao.remove(caroExcluido);
+
+		this.populaListaCarros();
+
+	}
+
+	public String editarCarro(Carro carro) {
+		this.codCarro = carro.getId();
+		
+		return "./editar-carro.xhtml";
+	}
+
+	public String cancelarAcao() throws IOException {
+
+		return "./listar-carro.xhtml";
+	}
+
 }

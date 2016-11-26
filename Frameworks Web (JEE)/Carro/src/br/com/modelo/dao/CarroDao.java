@@ -42,22 +42,51 @@ public class CarroDao {
 		return (Carro) query.getSingleResult();
 	}
 
-	public void save(Carro carro) {
-		EntityManager manager = this.getFactory().createEntityManager();
+	public Integer save(Carro carro) {
+		try {
+			EntityManager manager = this.getFactory().createEntityManager();
 
-		// ABRINDO A TRASACAO
-		manager.getTransaction().begin();
+			// ABRINDO A TRASACAO
+			manager.getTransaction().begin();
 
-		// OBJETO NO ESTADO MANAGED
-		manager.persist(carro);
+			// OBJETO NO ESTADO MANAGED
+			manager.persist(carro);
 
-		// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
-		manager.getTransaction().commit();
+			// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
+			manager.getTransaction().commit();
 
-		// System.out.println("Pessoa id: " + carro.getCodCarro());
+			// System.out.println("Pessoa id: " + carro.getCodCarro());
 
-		manager.close();
-		// factory.close();
+			manager.close();
+
+			return carro.getId();
+			// factory.close();
+		} catch (Exception e) {
+			System.err.println("Erro no banco = " + e);
+		}
+		return null;
+	}
+
+	public String remove(Carro carro) {
+		try {
+			EntityManager manager = this.getFactory().createEntityManager();
+
+			Carro carroRemove = manager.find(Carro.class, carro.getCodCarro());
+
+			manager.getTransaction().begin();
+
+			manager.remove(manager.contains(carroRemove) ? carroRemove : manager.merge(carroRemove));
+
+			manager.getTransaction().commit();
+
+			manager.close();
+
+			return "Carro removido com sucesso!";
+			// factory.close();
+		} catch (Exception e) {
+			System.err.println("Erro no banco = " + e);
+		}
+		return null;
 	}
 
 }

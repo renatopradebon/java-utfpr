@@ -46,11 +46,11 @@ public class Carro implements Serializable, BaseEntity {
 		this.proprietario = proprietario;
 	}
 
-	public int getCodCarro() {
+	public Integer getCodCarro() {
 		return this.codCarro;
 	}
 
-	public void setCodCarro(int codCarro) {
+	public void setCodCarro(Integer codCarro) {
 		this.codCarro = codCarro;
 	}
 
@@ -72,7 +72,7 @@ public class Carro implements Serializable, BaseEntity {
 
 	@Override
 	public String toString() {
-		return "(" + codCarro + ") " + placa + " - " + proprietario.toString() + "]";
+		return "(" + codCarro + ") " + placa + " - " + proprietario.toString();
 	}
 
 	@Override

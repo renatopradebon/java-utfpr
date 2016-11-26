@@ -73,7 +73,7 @@ public class Proprietario implements Serializable, BaseEntity {
 
 	@Override
 	public String toString() {
-		return "(" + codProprietario + ") " + nome + "]";
+		return "(" + codProprietario + ") " + nome;
 	}
 
 	@Override
