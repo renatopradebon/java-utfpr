@@ -22,13 +22,13 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="./index.xhtml">Home</a></li>
-			<li class="dropdown active"><a class="dropdown-toggle"
+			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#">Carros<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="./listar-carro.xhtml">Listar Carros</a></li>
 					<li><a href="./cadastrar-carro.xhtml">Inserir Carro</a></li>
 				</ul></li>
-			<li class="dropdown"><a class="dropdown-toggle"
+			<li class="dropdown active"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#">Proprietários<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="./listar-proprietario.xhtml">Listar
@@ -40,47 +40,39 @@
 	</div>
 	</nav>
 	<h:panelGroup class="container" layout="block">
-		<h:form class="form-horizontal" id="formListaCarro">
-			<h2>Listagem de Carros</h2>
+		<h:form class="form-horizontal" id="formListaProprietario">
+			<h2>Listagem de Proprietários</h2>
 
-			<h:dataTable value="#{carroController.listaCarros}" var="carroLista"
-				styleClass="table" id="tabelaCarros">
+			<h:dataTable value="#{proprietarioController.listaProprietarios}" var="proprietarioLista"
+				styleClass="table" id="tabelaProprietarios">
 
 				<h:column>
 					<!-- column header -->
 					<f:facet name="header">Código</f:facet>
 					<!-- row record -->
-    				#{carroLista.codCarro}
+    				#{proprietarioLista.codProprietario}
     			</h:column>
 
 				<h:column>
 					<f:facet name="header">Placa</f:facet>
-    				#{carroLista.placa}
-    			</h:column>
-
-				<h:column>
-					<f:facet name="header">Proprietário</f:facet>
-    				#{carroLista.proprietario}
-    			</h:column>
+    				#{proprietarioLista.nome}
+    			</h:column>				
 
 				<h:column>
 					<f:facet name="header">Ações</f:facet>
 					<h:commandLink value="Editar" id="editar" class="btn btn-warning"
 						immediate="true"
-						action="#{carroController.editarCarro(carroLista)}" 
+						action="#{proprietarioController.editarProprietario(proprietarioLista)}" 
 						ajax="false" />
-
 
 					<h:commandButton value="Excluir" id="excluir"
 						class="btn btn-danger"
-						action="#{carroController.excluirCarro(carroLista)}" ajax="false"
-						update=":formListaCarro" />
+						action="#{proprietarioController.excluirProprietario(proprietarioLista)}" ajax="false"
+						update=":formListaProprietario" />
 				</h:column>
 
 			</h:dataTable>
-
 		</h:form>
 	</h:panelGroup>
-
 </h:body>
 </html>
