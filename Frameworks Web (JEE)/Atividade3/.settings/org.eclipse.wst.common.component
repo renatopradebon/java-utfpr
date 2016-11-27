@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Atividade3-PrimeFaces">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="Atividade3-PrimeFaces"/>
+        <property name="java-output-path" value="/Atividade3-PrimeFaces/build/classes"/>
+    </wb-module>
+</project-modules>
