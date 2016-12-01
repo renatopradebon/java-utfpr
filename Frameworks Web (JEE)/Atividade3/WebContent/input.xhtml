@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Atividade 3 - Input</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:menuitem value="Home" url="./" />
+			<p:menuitem value="Validation" url="./validation.xhtml" />
+			<p:menuitem value="Input" url="./input.xhtml" />
+			<p:menuitem value="Panel" url="./panel.xhtml" />
+			<p:menuitem value="Chart" url="./chart.xhtml" />
+			<p:menuitem value="Photocam" url="./photocam.xhtml" />
+		</p:menubar>
+
+		<p:panel id="panel" header="Input">
+
+			<h:panelGrid>
+
+				<p:outputLabel value="Delay(1000):" for="acDelay" />
+				<p:autoComplete id="acDelay" queryDelay="1000"
+					value="#{input.valorMinimo}" completeMethod="#{input.completeText}"
+					effect="blind" />
+
+				<p:separator />
+
+				<h:outputText value="Teste Valor Boolean: " />
+				<p:selectBooleanButton id="booleanButton"
+					value="#{input.booleanButton}" onLabel="Yes" offLabel="No"
+					onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
+				</p:selectBooleanButton>
+
+				<p:separator />
+
+				<h3>Range Slider</h3>
+				<h:panelGrid columns="1" style="margin-bottom: 10px">
+					<h:outputText id="displayRange"
+						value="Between #{input.rangeSlide1} and #{input.rangeSlide2}" />
+					<p:slider for="txt6,txt7" display="displayRange"
+						style="width: 400px" range="true"
+						displayTemplate="Between {min} and {max}" />
+				</h:panelGrid>
+
+				<h:inputHidden id="txt6" value="#{input.rangeSlide1}" />
+				<h:inputHidden id="txt7" value="#{input.rangeSlide2}" />
+
+				<p:separator />
+
+				<p:editor id="editor" widgetVar="editorWidget" value="#{input.text}"
+					width="600" />
+
+				<p:commandButton value="Clear" type="button"
+					onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+
+				<p:separator />
+
+				<h:outputText value="Popup: " />
+				<p:colorPicker value="#{input.colorPopup}" />
+
+			</h:panelGrid>
+
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

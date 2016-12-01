@@ -28,7 +28,7 @@ public class UserView {
 	}
 
 	public void save() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + firstname + " " + lastname));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + firstname + " " + lastname + " idade: " + idade));
 	}
 
 	public Integer getIdade() {

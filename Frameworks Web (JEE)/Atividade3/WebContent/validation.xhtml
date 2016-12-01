@@ -5,41 +5,55 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Atividade 3 - Validation</title>
-</head>
-<body>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Atividade 3 - Validation</title>
+</h:head>
+<h:body>
 	<h:form>
-    <p:panel id="panel" header="New User">
- 
-        <p:messages id="msgs" />
- 
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel for="firstname" value="Firstname:" />
-            <p:inputText id="firstname" value="#{userView.firstname}" required="true" label="Firstname">
-                <f:validateLength minimum="2" />
-            </p:inputText>
-            <p:message for="firstname" display="icon" />
- 
-            <p:outputLabel for="lastname" value="Lastname:" />
-            <p:inputText id="lastname" value="#{userView.lastname}" label="Lastname" required="true">
-                <f:validateLength minimum="2" />
-                <p:ajax update="msgLastname" event="keyup" />
-            </p:inputText>
-            <p:message for="lastname" id="msgLastname" display="icon" />
-            
-            <p:outputLabel for="idade" value="Idade:" />
-            <p:inputText id="idade" value="#{userView.idade}" label="Idade" required="true">
-                <f:validateLength maximun="2" />
-                <p:ajax update="msgLastname" event="keyup" />
-            </p:inputText>
-            <p:message for="lastname" id="msgLastname" display="icon" />
- 
-        </h:panelGrid>
- 
-        <p:commandButton value="Save" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-    </p:panel>
-</h:form>
-</body>
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:menuitem value="Home" url="./" />
+			<p:menuitem value="Validation" url="./validation.xhtml" />
+			<p:menuitem value="Input" url="./input.xhtml" />
+			<p:menuitem value="Panel" url="./panel.xhtml" />
+			<p:menuitem value="Chart" url="./chart.xhtml" />
+			<p:menuitem value="Photocam" url="./photocam.xhtml" />
+		</p:menubar>
+
+		<p:panel id="panel" header="New user - Validation">
+
+			<p:messages id="msgs" />
+
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:outputLabel for="firstname" value="Firstname:" />
+				<p:inputText id="firstname" value="#{userView.firstname}"
+					required="true" label="Firstname">
+					<f:validateLength minimum="2" />
+				</p:inputText>
+				<p:message for="firstname" display="icon" />
+
+				<p:outputLabel for="lastname" value="Lastname:" />
+				<p:inputText id="lastname" value="#{userView.lastname}"
+					label="Lastname" required="true">
+					<f:validateLength minimum="2" />
+					<p:ajax update="msgLastname" event="keyup" />
+				</p:inputText>
+				<p:message for="lastname" id="msgLastname" display="icon" />
+
+				<p:outputLabel for="idade" value="Idade:" />
+				<p:inputText id="idade" value="#{userView.idade}" label="Idade"
+					required="true">
+					<f:validateLength maximun="2" />
+					<p:ajax update="msgIdade" event="keyup" />
+				</p:inputText>
+				<p:message for="idade" id="msgIdade" display="icon" />
+
+			</h:panelGrid>
+
+			<p:commandButton value="Save" update="panel"
+				actionListener="#{userView.save}" icon="ui-icon-check" />
+		</p:panel>
+	</h:form>
+</h:body>
 </html>
