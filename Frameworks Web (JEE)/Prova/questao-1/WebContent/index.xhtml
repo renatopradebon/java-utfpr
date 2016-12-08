@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Atividade 1 - DataTable - Paginator</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:dataTable var="pessoa" value="#{dtPaginatorView.pessoas}" rows="2"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			
+			<p:column headerText="Nome">
+				<h:outputText value="#{pessoa.nome}" />
+			</p:column>
+
+			<p:column headerText="Idade">
+				<h:outputText value="#{pessoa.idade}" />
+			</p:column>
+
+			<p:column headerText="Cidade">
+				<h:outputText value="#{pessoa.cidade}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+</h:body>
+</html>
