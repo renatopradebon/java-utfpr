@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="lib/jackson-jaxrs-1.9.2.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.9.2.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-xc-1.9.2.jar"/>
-	<classpathentry kind="lib" path="lib/jersey-client-1.19.1.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-client-1.19.1.jar" sourcepath="/home/renatopradebon/.m2/repository/com/sun/jersey/jersey-client/1.19.1/jersey-client-1.19.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jersey-core-1.19.1.jar"/>
 	<classpathentry kind="lib" path="lib/jersey-json-1.19.1.jar"/>
 	<classpathentry kind="lib" path="lib/jersey-server-1.19.1.jar"/>
