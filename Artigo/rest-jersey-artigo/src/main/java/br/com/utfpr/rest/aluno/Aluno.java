@@ -22,6 +22,8 @@ public class Aluno {
 
 	private Situacao situacao;
 
+	private Double media;
+
 	public String getNome() {
 		return nome;
 	}
@@ -86,17 +88,28 @@ public class Aluno {
 		Id = id;
 		return this;
 	}
-	
+
 	public Aluno builder() {
+		return this;
+	}
+
+	public Double getMedia() {
+		return media;
+	}
+
+	public void setMedia(Double media) {
+		this.media = media;
+	}
+
+	public Aluno media(Double media) {
+		this.media = media;
 		return this;
 	}
 
 	@Override
 	public String toString() {
 		return "Aluno [Id=" + Id + ", nome=" + nome + ", notas=" + notas + ", realizouExame=" + realizouExame
-				+ ", situacao=" + situacao + "]";
+				+ ", situacao=" + situacao + ", media=" + media + "]";
 	}
-	
-	
 
 }

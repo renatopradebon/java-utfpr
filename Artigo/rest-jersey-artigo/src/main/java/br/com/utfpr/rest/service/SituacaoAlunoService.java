@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import br.com.utfpr.rest.aluno.Aluno;
+import br.com.utfpr.rest.aluno.CalculaMediaAluno;
 import br.com.utfpr.rest.aluno.CalculaSituacaoAluno;
 import br.com.utfpr.rest.aluno.Notas;
 
@@ -31,23 +32,18 @@ public class SituacaoAlunoService {
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Aluno recuperaSituacaoAluno(Aluno aluno) {
-		CalculaSituacaoAluno calculaSituacaoAluno = new CalculaSituacaoAluno(aluno);
 
-		aluno.setSituacao(calculaSituacaoAluno.calculaSituacao());
+		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
+		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
 
 		setAluno(aluno);
+
+		System.out.println(aluno.toString());
 
 		return getAluno();
 	}
 
-	@Path("/situacao")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public String getSituacaoAluno() {
-		return getAluno().getSituacao().getSituacaoDesc();
-	}
-
-	@Path("/jsonaluno")
+	@Path("/json-exemplo")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Aluno addAluno() {
@@ -57,12 +53,23 @@ public class SituacaoAlunoService {
 		notas.add(new Notas().nota(7.5).observacaoNota("1 trimestre"));
 		notas.add(new Notas().nota(8.5).observacaoNota("2 trimestre"));
 		notas.add(new Notas().nota(5.5).observacaoNota("3 trimestre"));
+		notas.add(new Notas().nota(9.5).observacaoNota("4 trimestre"));
 
-		Aluno novoAluno = new Aluno().id(1L).nome("Renato Pradebon").notas(notas);
+		aluno = new Aluno().id(1L).nome("Renato Pradebon").notas(notas);
 
-		novoAluno.situacao(new CalculaSituacaoAluno(novoAluno).calculaSituacao());
+		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
+		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
 
-		return novoAluno;
+		System.out.println(aluno.toString());
+
+		return aluno;
+	}
+
+	@Path("/servico-ativo")
+	@GET
+	@Produces(MediaType.TEXT_HTML)
+	public String servicoIsAtivo() {
+		return "ON";
 	}
 
 }
