@@ -1,24 +1,38 @@
-package br.com.utfpr.rest.aluno;
+package br.com.utfpr.rest.entity.aluno;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import br.com.utfpr.rest.aluno.vo.Situacao;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+import br.com.utfpr.rest.entity.aluno.vo.Situacao;
+
+@Entity
 public class Aluno {
 
 	public Aluno() {
 		super();
 
-		this.realizouExame = Boolean.FALSE;
+		this.realizouExame = 1;
 	}
 
+	@Id
+	@GeneratedValue
 	private Long Id;
 
 	private String nome;
-
-	private ArrayList<Notas> notas;
-
-	private Boolean realizouExame;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Notas> notas;
+	
+	/*
+	 * 1 => SIM
+	 * 0 => NAO
+	 * */
+	private Integer realizouExame;
 
 	private Situacao situacao;
 
@@ -37,30 +51,30 @@ public class Aluno {
 		return this;
 	}
 
-	public ArrayList<Notas> getNotas() {
+	public List<Notas> getNotas() {
 		return notas;
 	}
 
-	public void setNotas(ArrayList<Notas> notas) {
+	public void setNotas(List<Notas> notas) {
 		this.notas = notas;
 	}
 
-	public Aluno notas(ArrayList<Notas> notas) {
+	public Aluno notas(List<Notas> notas) {
 		this.notas = notas;
 		return this;
 	}
 
-	public Boolean getRealizouExame() {
+	public Integer getRealizouExame() {
 		return realizouExame;
 	}
 
-	public void setRealizouExame(Boolean realizouExame) {
+	public void setRealizouExame(Integer realizouExame) {
 		this.realizouExame = realizouExame;
 	}
 
-	public Boolean realizouExame(Boolean realizouExame) {
+	public Aluno realizouExame(Integer realizouExame) {
 		this.realizouExame = realizouExame;
-		return realizouExame;
+		return this;
 	}
 
 	public Situacao getSituacao() {
@@ -110,6 +124,12 @@ public class Aluno {
 	public String toString() {
 		return "Aluno [Id=" + Id + ", nome=" + nome + ", notas=" + notas + ", realizouExame=" + realizouExame
 				+ ", situacao=" + situacao + ", media=" + media + "]";
+	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
 	}
 
 }

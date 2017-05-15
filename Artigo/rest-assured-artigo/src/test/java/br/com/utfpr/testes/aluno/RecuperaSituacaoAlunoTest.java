@@ -52,7 +52,7 @@ public class RecuperaSituacaoAlunoTest {
 		aluno.put("notas", notas);
 		aluno.put("realizouExame", "false");
 
-		given().contentType("application/json").body(aluno).when().post("/adiciona-nota").then()
+		given().contentType("application/json").body(aluno).when().post("/media-aluno").then()
 				.body("situacao", equalTo("APROVADO")).assertThat();
 	}
 
@@ -87,7 +87,7 @@ public class RecuperaSituacaoAlunoTest {
 		aluno.put("notas", notas);
 		aluno.put("realizouExame", "false");
 
-		given().contentType("application/json").body(aluno).when().post("/adiciona-nota").then()
+		given().contentType("application/json").body(aluno).when().post("/media-aluno").then()
 				.body("situacao", equalTo("EXAME")).assertThat();
 	}
 
@@ -125,7 +125,7 @@ public class RecuperaSituacaoAlunoTest {
 		aluno.put("notas", notas);
 		aluno.put("realizouExame", "true");
 
-		given().contentType("application/json").body(aluno).when().post("/adiciona-nota").then()
+		given().contentType("application/json").body(aluno).when().post("/media-aluno").then()
 				.body("situacao", equalTo("REPROVADO")).assertThat();
 	}
 
@@ -165,7 +165,7 @@ public class RecuperaSituacaoAlunoTest {
 		aluno.put("notas", notas);
 		aluno.put("realizouExame", "true");
 
-		given().contentType("application/json").body(aluno).when().post("/adiciona-nota").then()
+		given().contentType("application/json").body(aluno).when().post("/media-aluno").then()
 				.body("situacao", equalTo("APROVADO")).assertThat();
 	}
 

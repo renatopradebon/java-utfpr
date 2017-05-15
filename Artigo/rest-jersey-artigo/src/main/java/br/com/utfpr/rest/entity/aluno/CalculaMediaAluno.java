@@ -1,4 +1,4 @@
-package br.com.utfpr.rest.aluno;
+package br.com.utfpr.rest.entity.aluno;
 
 public class CalculaMediaAluno {
 

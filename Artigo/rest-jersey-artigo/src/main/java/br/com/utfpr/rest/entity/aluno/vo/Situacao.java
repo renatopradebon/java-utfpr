@@ -1,4 +1,4 @@
-package br.com.utfpr.rest.aluno.vo;
+package br.com.utfpr.rest.entity.aluno.vo;
 
 public enum Situacao {
 

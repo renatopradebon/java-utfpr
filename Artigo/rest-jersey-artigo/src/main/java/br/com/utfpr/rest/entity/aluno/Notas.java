@@ -1,10 +1,24 @@
-package br.com.utfpr.rest.aluno;
+package br.com.utfpr.rest.entity.aluno;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Notas {
 
+	@Id
+	@GeneratedValue
+	private Long Id;
+	
 	private Double nota;
 
 	private String observacaoNota;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Aluno aluno;
 
 	public Double getNota() {
 		return nota;
@@ -30,6 +44,22 @@ public class Notas {
 	public Notas observacaoNota(String observacaoNota) {
 		this.observacaoNota = observacaoNota;
 		return this;
+	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 }

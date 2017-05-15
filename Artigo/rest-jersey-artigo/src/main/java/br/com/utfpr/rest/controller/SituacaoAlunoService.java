@@ -1,4 +1,4 @@
-package br.com.utfpr.rest.service;
+package br.com.utfpr.rest.controller;
 
 import java.util.ArrayList;
 
@@ -9,15 +9,25 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.utfpr.rest.aluno.Aluno;
-import br.com.utfpr.rest.aluno.CalculaMediaAluno;
-import br.com.utfpr.rest.aluno.CalculaSituacaoAluno;
-import br.com.utfpr.rest.aluno.Notas;
+import br.com.utfpr.rest.entity.aluno.Aluno;
+import br.com.utfpr.rest.entity.aluno.CalculaMediaAluno;
+import br.com.utfpr.rest.entity.aluno.CalculaSituacaoAluno;
+import br.com.utfpr.rest.entity.aluno.Notas;
+import br.com.utfpr.rest.jpa.JpaTransaction;
 
 @Path("/notas")
 public class SituacaoAlunoService {
 
 	Aluno aluno;
+	JpaTransaction jpa;
+
+	// @PersistenceContext(unitName = "utfpr_notas")
+	// private EntityManager em;
+
+	public SituacaoAlunoService() {
+		super();
+		jpa = new JpaTransaction();
+	}
 
 	public Aluno getAluno() {
 		return aluno;
@@ -27,7 +37,7 @@ public class SituacaoAlunoService {
 		this.aluno = aluno;
 	}
 
-	@Path("/adiciona-nota")
+	@Path("/media-aluno")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
@@ -40,7 +50,17 @@ public class SituacaoAlunoService {
 
 		System.out.println(aluno.toString());
 
+		// em.persist(aluno);
+		jpa.saveAluno(aluno);
+
 		return getAluno();
+
+		// try {
+		//
+		// } catch (Exception e) {
+		// throw new WebApplicationException(500);
+		// }
+
 	}
 
 	@Path("/json-exemplo")
