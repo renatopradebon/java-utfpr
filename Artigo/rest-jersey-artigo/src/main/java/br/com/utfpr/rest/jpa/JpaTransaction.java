@@ -28,6 +28,7 @@ public class JpaTransaction {
 		
 		entityManager.merge(aluno);
 		entityManager.flush();
+		
 		entityManager.getTransaction().commit();
 		entityManager.close();
 	}
