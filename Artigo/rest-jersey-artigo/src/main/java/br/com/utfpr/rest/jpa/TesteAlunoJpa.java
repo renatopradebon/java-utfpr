@@ -24,16 +24,19 @@ public class TesteAlunoJpa {
 	}
 
 	public void insereAluno() {
+		Aluno aluno = new Aluno().nome("Renato Pradebon").realizouExame(0);
+
 		ArrayList<Notas> notas = new ArrayList<Notas>();
+
 		notas.add(new Notas().nota(8.5).observacaoNota("Primeiro bimestre"));
 		notas.add(new Notas().nota(7.5).observacaoNota("Segundo bimestre"));
 		notas.add(new Notas().nota(9.5).observacaoNota("Terceiro bimestre"));
 		notas.add(new Notas().nota(10.0).observacaoNota("Quarto bimestre"));
 
-		Aluno aluno = new Aluno().nome("Renato Pradebon").notas(notas).realizouExame(0);
+		aluno.setNotas(notas);
 		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
 		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
-		
+
 		jpa.saveAluno(aluno);
 	}
 

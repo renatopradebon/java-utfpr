@@ -4,7 +4,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -20,20 +24,20 @@ public class Aluno {
 	}
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
 	private String nome;
-	
-	@OneToMany(cascade = CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "aluno", targetEntity = Notas.class)
 	private List<Notas> notas;
-	
+
 	/*
-	 * 1 => SIM
-	 * 0 => NAO
-	 * */
+	 * 1 => SIM 0 => NAO
+	 */
 	private Integer realizouExame;
 
+	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
 
 	private Double media;
@@ -125,11 +129,24 @@ public class Aluno {
 		return "Aluno [Id=" + Id + ", nome=" + nome + ", notas=" + notas + ", realizouExame=" + realizouExame
 				+ ", situacao=" + situacao + ", media=" + media + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		int hash = 0;
+		hash += (Id != null ? Id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (!(object instanceof Aluno)) {
+			return false;
+		}
+		Aluno other = (Aluno) object;
+		if ((this.Id == null && other.Id != null) || (this.Id != null && !this.Id.equals(other.Id))) {
+			return false;
+		}
+		return true;
 	}
 
 }

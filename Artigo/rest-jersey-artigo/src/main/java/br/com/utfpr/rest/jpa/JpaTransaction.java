@@ -19,17 +19,21 @@ public class JpaTransaction {
 	public void saveAluno(Aluno aluno) {
 
 		entityManager.getTransaction().begin();
-		entityManager.persist(aluno);
+		
+//		if (aluno.getId() != null) {
+//			entityManager.merge(aluno);
+//		} else {
+//			entityManager.persist(aluno);
+//		}
+		
+		entityManager.merge(aluno);
+		entityManager.flush();
 		entityManager.getTransaction().commit();
 		entityManager.close();
-
 	}
 
 	public void updateAluno(Aluno aluno) {
-		entityManager.getTransaction().begin();
-		entityManager.merge(aluno);
-		entityManager.getTransaction().commit();
-		entityManager.close();
+		saveAluno(aluno);
 	}
 
 	public void deleteAluno(Long idAluno) {
@@ -38,6 +42,7 @@ public class JpaTransaction {
 
 		entityManager.getTransaction().begin();
 		entityManager.remove(aluno);
+		entityManager.flush();
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
