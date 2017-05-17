@@ -126,8 +126,8 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "Aluno [Id=" + Id + ", nome=" + nome + ", notas=" + notas + ", realizouExame=" + realizouExame
-				+ ", situacao=" + situacao + ", media=" + media + "]";
+		return "Aluno [Id=" + Id + ", nome=" + nome + ", realizouExame=" + realizouExame + ", situacao=" + situacao
+				+ ", media=" + media + "]";
 	}
 
 	@Override

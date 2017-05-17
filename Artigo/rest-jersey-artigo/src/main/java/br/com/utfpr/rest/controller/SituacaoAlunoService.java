@@ -19,20 +19,11 @@ import br.com.utfpr.rest.jpa.JpaTransaction;
 @Path("/notas")
 public class SituacaoAlunoService {
 
-	Aluno aluno;
 	JpaTransaction jpa;
 
 	public SituacaoAlunoService() {
 		super();
 		jpa = new JpaTransaction();
-	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
 	}
 
 	@Path("/cadastra-aluno")
@@ -44,18 +35,17 @@ public class SituacaoAlunoService {
 		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
 		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
 
-		setAluno(aluno);
+		List<Notas> notaLista = aluno.getNotas();
 
-		System.out.println(aluno.toString());
+		for (Notas nota : notaLista) {
+			nota.setAluno(aluno);
+		}
 
 		jpa.saveAluno(aluno);
 
-		return getAluno();
+		 System.out.println(aluno.toString());
 
-		// try {
-		// } catch (Exception e) {
-		// throw new WebApplicationException(500);
-		// }
+		return aluno;
 	}
 
 	@Path("/lista-alunos")
@@ -75,7 +65,7 @@ public class SituacaoAlunoService {
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Aluno jsonExemploAluno() {
 
-		aluno = new Aluno().id(1L).nome("Renato Pradebon");
+		Aluno aluno = new Aluno().id(1L).nome("Renato Pradebon");
 
 		ArrayList<Notas> notas = new ArrayList<>();
 

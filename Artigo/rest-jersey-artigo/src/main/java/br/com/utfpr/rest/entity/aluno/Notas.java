@@ -77,4 +77,9 @@ public class Notas {
 		return this;
 	}
 
+	@Override
+	public String toString() {
+		return "Notas [Id=" + Id + ", nota=" + nota + ", observacaoNota=" + observacaoNota + ", aluno=" + aluno + "]";
+	}	
+
 }
