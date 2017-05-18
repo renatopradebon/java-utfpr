@@ -3,11 +3,15 @@ package br.com.utfpr.rest.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import br.com.utfpr.rest.entity.aluno.Aluno;
@@ -31,7 +35,18 @@ public class SituacaoAlunoService {
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Aluno addAluno(Aluno aluno) {
+		return trataDadosAluno(aluno);
+	}
 
+	@Path("/edita-aluno")
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public Aluno editAluno(Aluno aluno) {
+		return trataDadosAluno(aluno);
+	}
+
+	public Aluno trataDadosAluno(Aluno aluno) {
 		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
 		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
 
@@ -43,9 +58,25 @@ public class SituacaoAlunoService {
 
 		jpa.saveAluno(aluno);
 
-		 System.out.println(aluno.toString());
-
 		return aluno;
+	}
+
+	@Path("/deleta-aluno")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public String deletaAluno(Long idAluno, @Context final HttpServletResponse response) {
+
+		// set HTTP code to "201 Created"
+		response.setStatus(HttpServletResponse.SC_CREATED);
+
+		try {
+			response.flushBuffer();
+			jpa.deleteAluno(idAluno);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+
+		return response.toString();
 	}
 
 	@Path("/lista-alunos")

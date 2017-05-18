@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.utfpr.rest.entity.aluno.Aluno;
+import br.com.utfpr.rest.entity.aluno.Notas;
 
 public class JpaTransaction {
 
@@ -19,16 +20,9 @@ public class JpaTransaction {
 	public void saveAluno(Aluno aluno) {
 
 		entityManager.getTransaction().begin();
-		
-//		if (aluno.getId() != null) {
-//			entityManager.merge(aluno);
-//		} else {
-//			entityManager.persist(aluno);
-//		}
-		
 		entityManager.merge(aluno);
 		entityManager.flush();
-		
+
 		entityManager.getTransaction().commit();
 		entityManager.close();
 	}
@@ -58,5 +52,11 @@ public class JpaTransaction {
 		entityManager.close();
 
 		return alunos;
+	}
+
+	public List<Notas> listNotas(Long idAluno) {
+		Aluno aluno = entityManager.find(Aluno.class, idAluno);
+
+		return aluno.getNotas();
 	}
 }
