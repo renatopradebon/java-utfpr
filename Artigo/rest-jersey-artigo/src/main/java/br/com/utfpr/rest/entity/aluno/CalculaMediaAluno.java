@@ -28,8 +28,9 @@ public class CalculaMediaAluno {
 	private Double somaNotas() {
 		Double somaTotal = 0.0;
 
-		somaTotal = (getAluno().getNotas().stream().mapToDouble(i -> i.getNota()).sum())
-				+ (jpa.listNotas(aluno.getId()).stream().mapToDouble(i -> i.getNota()).sum());
+		somaTotal = (getAluno().getNotas().stream().mapToDouble(i -> i.getNota()).sum());
+		// + (jpa.listNotas(aluno.getId()).stream().mapToDouble(i ->
+		// i.getNota()).sum());
 
 		return somaTotal;
 	}
