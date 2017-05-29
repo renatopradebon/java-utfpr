@@ -1,21 +1,26 @@
 package br.com.utfpr.rest.entity.aluno;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import br.com.utfpr.rest.entity.aluno.vo.Situacao;
 
 @Entity
-public class Aluno {
+public class Aluno implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Aluno() {
 		super();
@@ -24,22 +29,25 @@ public class Aluno {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
+	@Column
 	private String nome;
 
+	@Column
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "aluno", targetEntity = Notas.class)
 	private List<Notas> notas;
 
 	/*
 	 * 1 => SIM 0 => NAO
 	 */
+	@Column
 	private Integer realizouExame;
 
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
 
+	@Column
 	private Double media;
 
 	public String getNome() {

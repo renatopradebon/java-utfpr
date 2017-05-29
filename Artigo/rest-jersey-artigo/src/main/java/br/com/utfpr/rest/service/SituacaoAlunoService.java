@@ -1,17 +1,16 @@
-package br.com.utfpr.rest.controller;
+package br.com.utfpr.rest.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import br.com.utfpr.rest.entity.aluno.Aluno;
@@ -35,7 +34,11 @@ public class SituacaoAlunoService {
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Aluno addAluno(Aluno aluno) {
-		return trataDadosAluno(aluno);
+		aluno = trataNotasAluno(aluno);
+
+		jpa.saveAluno(aluno);
+
+		return aluno;
 	}
 
 	@Path("/edita-aluno")
@@ -43,12 +46,38 @@ public class SituacaoAlunoService {
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Aluno editAluno(Aluno aluno) {
-		return trataDadosAluno(aluno);
+		aluno = trataNotasAluno(aluno);
+
+		jpa.updateAluno(aluno);
+
+		return aluno;
 	}
 
-	public Aluno trataDadosAluno(Aluno aluno) {
-		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
-		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
+	@Path("/deleta-aluno/{idAluno}")
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public String deletaAluno(@PathParam("idAluno") Long idAluno) {
+		String retorno = jpa.deleteAluno(idAluno);
+
+		return "{\"status\": \"" + retorno + "\"}";
+	}
+
+	@Path("/lista-alunos")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public List<Aluno> listarAlunos() {
+		List<Aluno> alunos = jpa.listAlunos();
+
+		alunos.forEach((alunoLista) -> System.out.println(alunoLista.toString()));
+
+		return alunos;
+	}
+
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public Aluno trataNotasAluno(Aluno aluno) {
+
+		aluno.setMedia(CalculaMediaAluno.calculaMedia(aluno, jpa));
+		aluno.setSituacao(CalculaSituacaoAluno.calculaSituacao(aluno));
 
 		List<Notas> notaLista = aluno.getNotas();
 
@@ -56,39 +85,16 @@ public class SituacaoAlunoService {
 			nota.setAluno(aluno);
 		}
 
-		jpa.saveAluno(aluno);
+		aluno.toString();
 
 		return aluno;
 	}
 
-	@Path("/deleta-aluno")
-	@DELETE
-	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public String deletaAluno(Long idAluno, @Context final HttpServletResponse response) {
-
-		// set HTTP code to "201 Created"
-		response.setStatus(HttpServletResponse.SC_CREATED);
-
-		try {
-			response.flushBuffer();
-			jpa.deleteAluno(idAluno);
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-
-		return response.toString();
-	}
-
-	@Path("/lista-alunos")
+	@Path("/aluno/{idAluno}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public List<Aluno> listarAlunos() {
-
-		List<Aluno> alunos = jpa.listAlunos();
-
-		alunos.forEach((alunoLista) -> System.out.println(alunoLista.toString()));
-
-		return alunos;
+	public Aluno getAluno(@PathParam("idAluno") Long idAluno) {
+		return jpa.getAluno(idAluno);
 	}
 
 	@Path("/json-exemplo")
@@ -106,8 +112,8 @@ public class SituacaoAlunoService {
 		notas.add(new Notas().nota(9.5).observacaoNota("4 trimestre").aluno(aluno));
 
 		aluno.setNotas(notas);
-		aluno.setMedia(new CalculaMediaAluno(aluno).calculaMedia());
-		aluno.setSituacao(new CalculaSituacaoAluno(aluno).calculaSituacao());
+		aluno.setMedia(CalculaMediaAluno.calculaMedia(aluno, jpa));
+		aluno.setSituacao(CalculaSituacaoAluno.calculaSituacao(aluno));
 
 		System.out.println(aluno.toString());
 

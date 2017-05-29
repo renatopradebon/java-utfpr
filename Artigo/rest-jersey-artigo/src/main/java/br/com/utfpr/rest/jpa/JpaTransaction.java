@@ -1,5 +1,6 @@
 package br.com.utfpr.rest.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,46 +18,92 @@ public class JpaTransaction {
 		this.entityManager = jpa.getEntityManager();
 	}
 
-	public void saveAluno(Aluno aluno) {
+	public Aluno saveAluno(Aluno aluno) {
 
-		entityManager.getTransaction().begin();
-		entityManager.merge(aluno);
-		entityManager.flush();
+		try {
+			entityManager.getTransaction().begin();
 
-		entityManager.getTransaction().commit();
-		entityManager.close();
+			if (aluno.getId() != null) {
+				entityManager.merge(aluno);
+			} else {
+				entityManager.persist(aluno);
+			}
+
+			entityManager.flush();
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+
+		return aluno;
 	}
 
-	public void updateAluno(Aluno aluno) {
-		saveAluno(aluno);
+	public Aluno updateAluno(Aluno aluno) {
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.merge(aluno);
+			entityManager.flush();
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+		return aluno;
 	}
 
-	public void deleteAluno(Long idAluno) {
+	public Aluno getAluno(Long idAluno) {
+		Aluno aluno = new Aluno();
 
-		Aluno aluno = entityManager.find(Aluno.class, idAluno);
+		try {
+			aluno = entityManager.find(Aluno.class, idAluno);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
 
-		entityManager.getTransaction().begin();
-		entityManager.remove(aluno);
-		entityManager.flush();
-		entityManager.getTransaction().commit();
-		entityManager.close();
+		return aluno;
+	}
 
+	public String deleteAluno(Long idAluno) {
+		try {
+			Aluno aluno = getAluno(idAluno);
+			entityManager.getTransaction().begin();
+			entityManager.remove(aluno);
+			entityManager.flush();
+			entityManager.getTransaction().commit();
+			return "REMOVED";
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+			return "ERROR";
+		}
 	}
 
 	public List<Aluno> listAlunos() {
+		List<Aluno> alunos = new ArrayList<>();
 
-		String query = "select a from Aluno a";
+		try {
+			String query = "select a from Aluno a";
+			alunos = entityManager.createQuery(query, Aluno.class).getResultList();
 
-		List<Aluno> alunos = entityManager.createQuery(query, Aluno.class).getResultList();
-
-		entityManager.close();
-
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
 		return alunos;
 	}
 
 	public List<Notas> listNotas(Long idAluno) {
-		Aluno aluno = entityManager.find(Aluno.class, idAluno);
+		List<Notas> notas = new ArrayList<>();
 
-		return aluno.getNotas();
+		try {
+			notas = getAluno(idAluno).getNotas();
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+
+		return notas;
 	}
 }

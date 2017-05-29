@@ -1,5 +1,6 @@
 package br.com.utfpr.rest.entity.aluno;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,11 +14,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Notas {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long Id;
-
+	@Column
 	private Double nota;
 
+	@Column
 	private String observacaoNota;
 
 	@ManyToOne(targetEntity = Aluno.class)
@@ -80,6 +82,6 @@ public class Notas {
 	@Override
 	public String toString() {
 		return "Notas [Id=" + Id + ", nota=" + nota + ", observacaoNota=" + observacaoNota + ", aluno=" + aluno + "]";
-	}	
+	}
 
 }
